@@ -1,4 +1,6 @@
 
 if(TEST)
-add_subdirectory(cpputest)
+add_subdirectory(gtest)
 endif()
+
+add_subdirectory(eigen)
