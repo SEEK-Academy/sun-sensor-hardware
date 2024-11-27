@@ -1,4 +1,4 @@
-#sun-sensor-hardware
+# sun-sensor-hardware
 WIP
 
 # Dependencies
