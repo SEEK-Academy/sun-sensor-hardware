@@ -35,7 +35,6 @@ class LightEstimatorTests : public testing::Test {
 };
 
 TEST_F(LightEstimatorTests, EstimatePlane) {
-  std::array <float,4> measurements = {0.12,0.1,0.9,0.0};
+  std::array <float,4> measurements = {1,1.192};
   Eigen::AngleAxisf angleEstimate = LightEstimator::estimateRotationX(std::span(measurements));
-  
 }
