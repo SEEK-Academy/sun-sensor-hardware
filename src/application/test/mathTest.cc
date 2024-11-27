@@ -2,18 +2,18 @@
 #include <span>
 
 #include <gtest/gtest.h>
-#include "DSP/lightEstimator.h"
+#include "math_functions/avg.h"
 
-class LightEstimatorTests : public testing::Test {
+class MathTest : public testing::Test {
  protected:
   // You can remove any or all of the following functions if their bodies would
   // be empty.
 
-  LightEstimatorTests() {
+  MathTest() {
      // You can do set-up work for each test here.
   }
 
-  ~LightEstimatorTests() override {
+  ~MathTest() override {
      // You can do clean-up work that doesn't throw exceptions here.
   }
 
@@ -34,8 +34,9 @@ class LightEstimatorTests : public testing::Test {
   // for Foo.
 };
 
-TEST_F(LightEstimatorTests, EstimatePlane) {
-  std::array <float,4> measurements = {0.12,0.1,0.9,0.0};
-  Eigen::AngleAxisf angleEstimate = LightEstimator::estimateRotationX(std::span(measurements));
+TEST_F(MathTest, EstimatePlane) {
+  std::array <float,4> measurements = {1.3712f,1.0f};
+  float angleEstimate = math::rootMeanSquare<float,std::array <float,4>>(measurements);
+  ASSERT_FLOAT_EQ(angleEstimate, 1.2f);
   
 }

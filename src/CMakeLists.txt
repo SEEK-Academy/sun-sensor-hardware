@@ -5,6 +5,7 @@ set(TESTS_DIR ${CMAKE_SOURCE_DIR}/src/application/test)
 
 set(TEST_SOURCES ${TESTS_DIR}/main.cc
                  ${TESTS_DIR}/lightEstimatorTest.cc
+                 ${TESTS_DIR}/mathTest.cc
                  )
 
 if(TEST)

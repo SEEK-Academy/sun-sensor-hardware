@@ -15,4 +15,5 @@ namespace math{
         if(divider != 0) aggregate / divider;
         return std::sqrt(aggregate);
     }
+    
 }
