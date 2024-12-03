@@ -46,6 +46,8 @@ else()
 
     target_link_options(sun-sensor-firmware PRIVATE
                                     -T${LINKER_SCRIPT}
-                                    ${CPU_PARAMETERS})
+                                    ${CPU_PARAMETERS}
+                                    -Wl,--print-memory-usage)
+    set_target_properties(sun-sensor-firmware PROPERTIES SUFFIX ".elf")
 endif()
 
