@@ -1,6 +1,6 @@
 #include "main.h"
 
-void main(void){
+int main(void){
     while (true)
     {
         asm("nop");
