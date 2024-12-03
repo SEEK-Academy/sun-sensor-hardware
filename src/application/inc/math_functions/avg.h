@@ -1,19 +1,37 @@
 #include <cmath>
 
-namespace math{
-    template <typename T, typename S>
-    T rootMeanSquare(const S data){
-        static_assert(std::is_same<typename S::value_type,T>::value, "type in the container is different than return type");
+namespace math
+{
+    template <typename T, size_t S>
+    T rootMeanSquare(const std::span<T, S> data)
+    {
+        int divider   = 0;
+        T   aggregate = 0;
 
-        int divider = 0; 
-        T aggregate = 0;      
-        
-        for(auto elem : data){
+        for (auto elem : data)
+        {
             aggregate += elem * elem;
             divider++;
         }
-        if(divider != 0) aggregate / divider;
+        if (divider != 0)
+            aggregate /= divider;
         return std::sqrt(aggregate);
     }
-    
-}
+
+    template <typename T, size_t S>
+    T weightedRange(const std::span<T, S> data, const std::span<T, S> weights)
+    {
+        int divider   = 0;
+        T   aggregate = 0;
+
+        for (auto elem : data)
+        {
+            aggregate += elem * elem;
+            divider++;
+        }
+        if (divider != 0)
+            aggregate /= divider;
+        return std::sqrt(aggregate);
+    }
+
+}  // namespace math
