@@ -15,15 +15,14 @@ if(TEST)
     target_include_directories(run_tests PUBLIC ${SOURCES_DIR}/inc)
 else()
 
-    set(MCU_FAMILY STM32G4xC)
-    set(MCU_MODEL STM32F401xC)
+    set(MCU_FAMILY STM32F4xE)
+    set(MCU_MODEL STM32F411xE)
     set(CPU_PARAMETERS
-        -mcpu=cortex-m4
-        -mthumb
+        -march=armv7e-m
         -mfpu=fpv4-sp-d16
         -mfloat-abi=hard)
 
-    set(STARTUP ${CMAKE_SOURCE_DIR}/src/drivers/cmsis-device-f4/Source/Templates/gcc/startup_stm32f401xc.s 
+    set(STARTUP ${CMAKE_SOURCE_DIR}/src/drivers/cmsis-device-f4/Source/Templates/gcc/startup_stm32f411xe.s 
                 ${CMAKE_SOURCE_DIR}/src/drivers/cmsis-device-f4/Source/Templates/system_stm32f4xx.c)
     set(CUBE_F401XC_INCLUDE_DIR ${CMAKE_SOURCE_DIR}/src/drivers/cmsis-device-f4/Include)
     set(CMSIS_CORE_INCLUDE_DIR ${CMAKE_SOURCE_DIR}/src/drivers/cmsis-6/CMSIS/Core/Include)
@@ -31,7 +30,7 @@ else()
     set(SUN_SENSOR_SOURCES ${STARTUP} ${SOURCES_DIR}/src/main.cc)
     set(SUN_SENSOR_MAIN_INCLUDES ${SOURCES_DIR}/inc)
 
-    set(LINKER_SCRIPT ${CMAKE_SOURCE_DIR}/src/drivers/STM32F401CC_FLASH.ld)
+    set(LINKER_SCRIPT ${CMAKE_SOURCE_DIR}/src/drivers/STM32F411CE_FLASH.ld)
 
     add_executable(sun-sensor-firmware ${SUN_SENSOR_SOURCES})
     target_include_directories(sun-sensor-firmware PUBLIC ${CUBE_F401XC_INCLUDE_DIR} ${CMSIS_CORE_INCLUDE_DIR} ${SUN_SENSOR_MAIN_INCLUDES})
