@@ -3,6 +3,7 @@
 
 #include <gtest/gtest.h>
 #include "DSP/lightEstimator.h"
+#include "datatypes.h"
 
 class LightEstimatorTests : public testing::Test {
  protected:
@@ -34,7 +35,7 @@ class LightEstimatorTests : public testing::Test {
   // for Foo.
 };
 
-TEST_F(LightEstimatorTests, EstimatePlane) {
-  std::array <float,4> measurements = {1,1.192};
-  Eigen::AngleAxisf angleEstimate = LightEstimator::estimateRotationX(std::span(measurements));
+TEST_F(LightEstimatorTests, EstimateRotation) {
+  std::array <float,4> measurements = {1.0,0.0,0.0,0.0};
+  math::Vector3 angleEstimate = LightEstimator::estimateRotationX(std::span(measurements));
 }

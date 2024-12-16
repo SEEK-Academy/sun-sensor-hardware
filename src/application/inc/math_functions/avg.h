@@ -1,4 +1,5 @@
 #include <cmath>
+#include <span>
 
 namespace math
 {

@@ -11,7 +11,5 @@ set(CMAKE_CXX_STANDARD 20)
 
 add_subdirectory(third_party)
 
-find_package(Eigen3 REQUIRED)
-
 add_subdirectory(src)
 
