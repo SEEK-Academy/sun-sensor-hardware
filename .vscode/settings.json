@@ -100,5 +100,6 @@
         "openglsupport": "cpp",
         "specialfunctions": "cpp",
         "splines": "cpp"
-    }
+    },
+    "cortex-debug.variableUseNaturalFormat": true
 }
