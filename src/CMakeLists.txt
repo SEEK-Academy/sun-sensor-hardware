@@ -27,7 +27,8 @@ else()
     set(CUBE_F401XC_INCLUDE_DIR ${CMAKE_SOURCE_DIR}/src/drivers/cmsis-device-f4/Include)
     set(CMSIS_CORE_INCLUDE_DIR ${CMAKE_SOURCE_DIR}/src/drivers/cmsis-6/CMSIS/Core/Include)
 
-    set(SUN_SENSOR_SOURCES  ${STARTUP}  
+    set(SUN_SENSOR_SOURCES  ${STARTUP}
+                            ${SOURCES_DIR}/src/peripherials/i2c.cc
                             ${SOURCES_DIR}/src/main.cc
                             ${SOURCES_DIR}/src/peripherials/usart.cc
                             ${SOURCES_DIR}/src/peripherials/nvic.cc )

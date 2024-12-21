@@ -30,6 +30,8 @@ namespace peripherials
         USART2->BRR = sysClock / 4 / baudrate;  // Set baud rate (Assume 100 MHz system clock)
 
         USART2->CR1 |= USART_CR1_UE;  // Enable USART2
+
+        isInitialized = true;
     }
 
     I_USART::USART_Error_t Usart2::sendData(std::vector<uint8_t> data)

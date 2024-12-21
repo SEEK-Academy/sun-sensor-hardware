@@ -5,8 +5,8 @@
 #include <vector>
 
 #define PLL_Q 4U
-#define PLL_M 8U
-#define PLL_N 200U
+#define PLL_M 12U
+#define PLL_N 192U
 #define PLL_P 4U
 
 volatile uint32_t ticks;
@@ -20,9 +20,9 @@ void ClockInit()
 {
     // BlackPill has 25Mhz HSE clock
 
-    RCC->CR |= RCC_CR_HSION;
+    RCC->CR |= RCC_CR_HSEON;
     // RCC->CR |= RCC_CR_HSEON;  // Turn on HSE
-    while (!(RCC->CR & RCC_CR_HSIRDY))
+    while (!(RCC->CR & RCC_CR_HSERDY))
     {
         // wait for stable clock
     }
@@ -33,7 +33,7 @@ void ClockInit()
 
     RCC->PLLCFGR |= (PLL_Q << RCC_PLLCFGR_PLLQ_Pos) | (PLL_P << RCC_PLLCFGR_PLLP_Pos) |
                     (PLL_N << RCC_PLLCFGR_PLLN_Pos) | (PLL_M << RCC_PLLCFGR_PLLM_Pos) |
-                    RCC_PLLCFGR_PLLSRC_HSI;
+                    RCC_PLLCFGR_PLLSRC_HSE;
     RCC->CR |= RCC_CR_PLLON;
 
     while (!(RCC->CR & RCC_CR_PLLRDY))

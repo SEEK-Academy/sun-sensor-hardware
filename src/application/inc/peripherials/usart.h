@@ -15,6 +15,8 @@ namespace peripherials
             MISC_ERROR = (1 << 1)
         };
 
+        bool isInitialized = false;
+
         virtual void          init(uint32_t baudrate)             = 0;
         virtual USART_Error_t sendData(std::vector<uint8_t> data) = 0;
     };
