@@ -27,7 +27,11 @@ else()
     set(CUBE_F401XC_INCLUDE_DIR ${CMAKE_SOURCE_DIR}/src/drivers/cmsis-device-f4/Include)
     set(CMSIS_CORE_INCLUDE_DIR ${CMAKE_SOURCE_DIR}/src/drivers/cmsis-6/CMSIS/Core/Include)
 
-    set(SUN_SENSOR_SOURCES ${STARTUP} ${SOURCES_DIR}/src/main.cc)
+    set(SUN_SENSOR_SOURCES  ${STARTUP}  
+                            ${SOURCES_DIR}/src/main.cc
+                            ${SOURCES_DIR}/src/peripherials/usart.cc
+                            ${SOURCES_DIR}/src/peripherials/nvic.cc )
+
     set(SUN_SENSOR_MAIN_INCLUDES ${SOURCES_DIR}/inc)
 
     set(LINKER_SCRIPT ${CMAKE_SOURCE_DIR}/src/drivers/STM32F411CE_FLASH.ld)
@@ -48,5 +52,11 @@ else()
                                     ${CPU_PARAMETERS}
                                     -Wl,--print-memory-usage)
     set_target_properties(sun-sensor-firmware PROPERTIES SUFFIX ".elf")
+
+    add_custom_command(TARGET sun-sensor-firmware
+        POST_BUILD
+        COMMAND ${CMAKE_OBJCOPY} -O binary ${CMAKE_BINARY_DIR}/src/${PROJECT_NAME}.elf ${PROJECT_NAME}.bin
+        COMMENT "Generating sun-sensor-firmware.bin from sun-sensor-firmware.elf"
+        )
 endif()
 

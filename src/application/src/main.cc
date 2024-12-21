@@ -1,6 +1,8 @@
 #include "main.h"
 #include "stm32f401xc.h"
+#include "peripherials/usart.h"
 #include <cstdint>
+#include <vector>
 
 #define PLL_Q 4U
 #define PLL_M 8U
@@ -73,35 +75,24 @@ void delay_ms(uint32_t milliseconds)
     }
 }
 
-// void __attribute__((optimize("O0"))) delay(uint32_t time)
-// {
-//     static uint32_t i;
-//     for (i = 0; i < time; i++)
-//     {
-//     }
-// }
+
+peripherials::Usart2 usart2;
 
 extern "C" int main(void)
 {
-    // RCC->AHB1ENR |= RCC_AHB1ENR_GPIOCEN;  // RCC ON
-
-    // GPIOC->MODER |= GPIO_MODER_MODER13_0;  // mode out
-    // GPIOC->OTYPER  = 0;
-    // GPIOC->OSPEEDR = 0;
-
-    // while (1)
-    // {
-    //     GPIOC->ODR ^= GPIO_ODR_OD13;
-    //     delay(1000000);
-    // }
-
     ClockInit();
 
     GPIOC->MODER |= (1 << GPIO_MODER_MODER13_Pos);
 
+    std::vector<uint8_t> example_data = {'d','a','t','a','\n'};
+
+    constexpr uint32_t baudrate = 115200U;
+    usart2.init(baudrate);
+
     while (1)
     {
         GPIOC->ODR ^= GPIO_ODR_OD13;
+        usart2.sendData(example_data);
         delay_ms(500);
     }
 }
