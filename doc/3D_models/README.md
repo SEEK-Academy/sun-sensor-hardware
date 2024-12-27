@@ -6,6 +6,16 @@
 
 This section provides a chronological record of development.
 
+### Release 2024-12-27
+
+#### Parts:
+- Slit sensor face v7
+- Frame stick v2
+- Internal platform v1
+
+#### Notes:
+An internal platform for mounting the electronic board has been added. It has been designed to fit with preview face and frame models. The sticks for mounting the electronic board were too long, thin and crackly, instead of being flexible in one dimension.
+
 ### Release 2024-12-22
 
 #### Parts:
