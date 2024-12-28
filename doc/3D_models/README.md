@@ -10,11 +10,29 @@ This section provides a chronological record of development.
 
 #### Parts:
 - Slit sensor face v7
+- Frame stick v3
+- Internal platform v1
+
+#### Notes:
+The frame changes:
+
+A lot of material has been removed from the interior of the CubeSat. 
+Platform joints in the stick part and face joints in the stick lid part are not well attached to the rest of the frame parts. 
+These segments are prone to breaking, especially during post-printing processing. 
+After assembly with face parts, it is well fitted and stable. 
+Spacing between plafotm joints was set to 16mm, which looks enought for platforms with electronics.
+
+### Release 2024-12-27
+
+#### Parts:
+- Slit sensor face v7
 - Frame stick v2
 - Internal platform v1
 
 #### Notes:
-An internal platform for mounting the electronic board has been added. It has been designed to fit with preview face and frame models. The sticks for mounting the electronic board were too long, thin and crackly, instead of being flexible in one dimension.
+An internal platform for mounting the electronic board has been added. 
+It has been designed to fit with preview face and frame models. 
+The sticks for mounting the electronic board were too long, thin and crackly, instead of being flexible in one dimension.
 
 ### Release 2024-12-22
 
@@ -37,7 +55,8 @@ The frame changes:
 - Added top and bottom slit for the top and bottom face corners.
 - Added secound frame stick lid pard for top and bottom face connection with slit and nut installation.
  
-The tolerance of the slits is enough for printing precision. The weight of fully assembled two faces of the CubeSat  is around 130g, and there is an possibility to reduce the weight of the frame parts.
+The tolerance of the slits is enough for printing precision. 
+The weight of fully assembled two faces of the CubeSat  is around 130g, and there is an possibility to reduce the weight of the frame parts.
 
 ### Release 2024-12-18
 
@@ -47,7 +66,10 @@ The tolerance of the slits is enough for printing precision. The weight of fully
 - Frame stick v1
 
 #### Notes:
-The faces are too wide, so the sticks front walls are too thin. The face needs to be modelled a little smaller. The sticks need a margin error at the joint of the faces. The Face lid has not been printed.
+The faces are too wide, so the sticks front walls are too thin. 
+The face needs to be modelled a little smaller. 
+The sticks need a margin error at the joint of the faces. 
+The Face lid has not been printed.
 
 ### Rrevious releases
 
