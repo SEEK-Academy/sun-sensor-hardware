@@ -6,6 +6,22 @@
 
 This section provides a chronological record of development.
 
+### Release 2025-01-22
+
+#### Parts:
+- Slit sensor face v7
+- Frame stick v3
+- Internal platform v2
+
+#### Notes:
+The platform changes:
+
+New internal platform is in smother shape on the borders.
+The center of the platform is removed due to the central installation of an electronic board.
+But the center void is too wide to hold an electronic board in place.
+The stabilizers are added to stabilize an electronic board vertically and prevent of prolapse.
+The stabilizers have pointed edges to cover a minimum area on the board, and they are also mounted with a screw and nut.
+
 ### Release 2024-12-28
 
 #### Parts:
@@ -42,6 +58,7 @@ The sticks for mounting the electronic board were too long, thin and crackly, in
 
 #### Notes:
 The face changes:
+
 - Decreased size up to 90x90 mm.
 - Removed perpendicular hooks on the edges to simplify assembly.
 - Reduced number of connecting holes.
