@@ -11,6 +11,22 @@ This section provides a chronological record of development.
 #### Parts:
 - Slit sensor face v7
 - Frame stick v3
+- Internal platform v3
+
+#### Notes:
+The platform changes:
+
+Small size changes to better fit with an electrical board inside interial void.
+After printing there is still a little width spacing for an electrical board.
+Added a grid pattern on the bottom of the void to better hold an electronic board.
+The grid is intended to be universal by being able to cut out individual grid segments.
+The grid pattern does not mesh with the solder at the bottom of an electronic board.
+
+### Release 2025-01-22
+
+#### Parts:
+- Slit sensor face v7
+- Frame stick v3
 - Internal platform v2
 
 #### Notes:
