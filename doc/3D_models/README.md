@@ -104,6 +104,6 @@ The face needs to be modelled a little smaller.
 The sticks need a margin error at the joint of the faces. 
 The Face lid has not been printed.
 
-### Rrevious releases
+### Previous releases
 
 Testing and prototyping.
