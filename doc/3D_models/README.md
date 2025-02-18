@@ -1,6 +1,6 @@
 # 3D models
 
- his directory serves as the central repository for managing and organizing 3D model components, and calculation sheets used in the CubeSat project. The resources provided here support the development, iteration, and documentation of the mechanical aspects of the project.
+This directory serves as the central repository for managing and organizing 3D model components, and calculation sheets used in the CubeSat project. The resources provided here support the development, iteration, and documentation of the mechanical aspects of the project.
 
 ## Model Development:
 
