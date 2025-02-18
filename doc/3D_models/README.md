@@ -6,6 +6,19 @@ This directory serves as the central repository for managing and organizing 3D m
 
 This section provides a chronological record of development.
 
+### Release 2025-02-18
+
+#### Parts:
+- Slit sensor face v7
+- Frame stick v3
+- Internal platform v4
+
+#### Notes:
+The platform changes:
+
+Reduced size of internal void, the electrical board fits perfectly inside. 
+Changed support grid pattern on the bottom of the internal void to match the solder pattern on the bottom of the electrical board.
+
 ### Release 2025-01-22
 
 #### Parts:
