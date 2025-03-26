@@ -48,6 +48,7 @@ else()
     set(SUN_SENSOR_SOURCES  ${STARTUP}
                             ${HAL_SOURCES}
                             ${SOURCES_DIR}/src/peripherials/i2c.cc
+                            ${SOURCES_DIR}/src/peripherials/usb/usb.cc
                             ${SOURCES_DIR}/src/main.cc
                             ${SOURCES_DIR}/src/peripherials/usart.cc
                             ${SOURCES_DIR}/src/peripherials/nvic.cc 

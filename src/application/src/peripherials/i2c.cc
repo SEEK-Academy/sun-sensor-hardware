@@ -1,7 +1,7 @@
 #include "stm32f401xc.h"
 #include "peripherials/i2c.h"
 
-namespace peripherials
+namespace peripherals
 {
 
     void I2C_1::init()
@@ -44,8 +44,8 @@ namespace peripherials
         I2C1->CR1 |= I2C_CR1_STOP;
     }
 
-    I_I2C::I2C_Error_t I2C_1::sendData(std::vector<uint8_t> data){
-            
+    I_I2C::I2C_Error_t I2C_1::sendData(std::vector<uint8_t> data)
+    {
     }
 
-}  // namespace peripherials
+}  // namespace peripherals

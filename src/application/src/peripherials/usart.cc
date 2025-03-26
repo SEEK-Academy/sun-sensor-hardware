@@ -3,7 +3,7 @@
 #include <vector>
 #include <cstdint>
 
-namespace peripherials
+namespace peripherals
 {
 
     void Usart2::init(uint32_t baudrate)

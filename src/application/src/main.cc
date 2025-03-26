@@ -4,6 +4,7 @@
 #include "usbd_cdc_if_template.h"
 #include <cstdint>
 #include <vector>
+#include "usb.h"
 
 #define PLL_Q 4U
 #define PLL_M 25U
@@ -102,7 +103,6 @@ void delay_ms(uint32_t milliseconds)
     }
 }
 
-peripherials::Usart2           usart2;
 USBD_HandleTypeDef             hUsbDeviceFS;
 extern USBD_DescriptorsTypeDef CDC_Desc;
 
@@ -130,10 +130,13 @@ extern "C" int main(void)
     {
         Error_Handler();
     }
+    peripherals::USB usb = peripherals::USB();
+    std::vector<char> dataToSend({'S','E','E','K','\n'});
 
     while (1)
     {
         GPIOC->ODR ^= GPIO_ODR_OD13;
         HAL_Delay(500);
+        usb.writeData(dataToSend);
     }
 }

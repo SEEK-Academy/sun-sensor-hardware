@@ -2,7 +2,7 @@
 #include <vector>
 #include <cstdint>
 
-namespace peripherials
+namespace peripherals
 {
     constexpr uint32_t sysClock = 100'000'000;
 
@@ -27,4 +27,4 @@ namespace peripherials
         void          init(uint32_t baudrate) override;
         USART_Error_t sendData(std::vector<uint8_t> data) override;
     };
-}  // namespace peripherials
+}  // namespace peripherals

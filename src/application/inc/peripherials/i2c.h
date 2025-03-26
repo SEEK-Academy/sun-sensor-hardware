@@ -2,7 +2,7 @@
 #include <vector>
 #include <cstdint>
 
-namespace peripherials
+namespace peripherals
 {
     constexpr uint32_t sysClock = 100'000'000;
 
@@ -56,4 +56,4 @@ namespace peripherials
         std::pair<std::vector<uint8_t>, I2C_Error_t> recieveData(bool ack) override;
         void                                         stop() override;
     };
-}  // namespace peripherials
+}  // namespace peripherals
