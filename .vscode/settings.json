@@ -100,7 +100,12 @@
         "openglsupport": "cpp",
         "specialfunctions": "cpp",
         "splines": "cpp",
-        "*.ipp": "cpp"
+        "*.ipp": "cpp",
+        "usbd_core.h": "c",
+        "usbd_cdc.h": "c",
+        "usbd_ctlreq.h": "c",
+        "usbd_ioreq.h": "c",
+        "usbd_conf_template.h": "c"
     },
     "cortex-debug.variableUseNaturalFormat": true
 }

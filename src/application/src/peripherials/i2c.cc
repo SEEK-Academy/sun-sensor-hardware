@@ -1,4 +1,4 @@
-#include "stm32f411xe.h"
+#include "stm32f401xc.h"
 #include "peripherials/i2c.h"
 
 namespace peripherials
