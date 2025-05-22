@@ -1,0 +1,31 @@
+syntax = "proto3";
+
+package seek.sun_sensor.v1;
+
+message Vector {
+  float x = 1;
+  float y = 2;
+  float z = 3;
+}
+
+enum ErrorCode {
+  OK = 0;
+  SENSOR_READ_FAILURE = 1;// Failure reading data from photoresistors
+  COMPUTATION_ERROR = 2;// Error during data computation (e.g., angle calculations)
+  COMMUNICATION_TIMEOUT = 3;// Communication timeout or failure
+  UNKNOWN_ERROR = 4;// An unknown error occurred
+}
+
+message SunSensorData {
+  // Normalized direction vector components
+  Vector unit_vector = 1;
+
+  // Standard deviation of the measurement in radians
+  float std_deviation = 2;
+
+  // Error code indicating SunSensor status
+  ErrorCode error_code = 3;
+
+  // CRC32 checksum computed over the serialized payload excluding this field
+  uint32 crc32 = 4;
+}
