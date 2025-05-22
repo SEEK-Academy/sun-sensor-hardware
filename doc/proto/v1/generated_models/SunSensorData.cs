@@ -24,18 +24,20 @@ namespace Seek.SunSensor.V1 {
     static SunSensorDataReflection() {
       byte[] descriptorData = global::System.Convert.FromBase64String(
           string.Concat(
-            "ChVzdW5fc2Vuc29yX2RhdGEucHJvdG8SEnNlZWsuc3VuX3NlbnNvci52MSKt",
-            "AQoNU3VuU2Vuc29yRGF0YRIVCg11bml0X3ZlY3Rvcl94GAEgASgCEhUKDXVu",
-            "aXRfdmVjdG9yX3kYAiABKAISFQoNdW5pdF92ZWN0b3JfehgDIAEoAhIVCg1z",
-            "dGRfZGV2aWF0aW9uGAQgASgCEjEKCmVycm9yX2NvZGUYBSABKA4yHS5zZWVr",
-            "LnN1bl9zZW5zb3IudjEuRXJyb3JDb2RlEg0KBWNyYzMyGAYgASgNKnEKCUVy",
-            "cm9yQ29kZRIGCgJPSxAAEhcKE1NFTlNPUl9SRUFEX0ZBSUxVUkUQARIVChFD",
-            "T01QVVRBVElPTl9FUlJPUhACEhkKFUNPTU1VTklDQVRJT05fVElNRU9VVBAD",
-            "EhEKDVVOS05PV05fRVJST1IQBGIGcHJvdG8z"));
+            "ChVzdW5fc2Vuc29yX2RhdGEucHJvdG8SEnNlZWsuc3VuX3NlbnNvci52MSIp",
+            "CgZWZWN0b3ISCQoBeBgBIAEoAhIJCgF5GAIgASgCEgkKAXoYAyABKAIimQEK",
+            "DVN1blNlbnNvckRhdGESLwoLdW5pdF92ZWN0b3IYASABKAsyGi5zZWVrLnN1",
+            "bl9zZW5zb3IudjEuVmVjdG9yEhUKDXN0ZF9kZXZpYXRpb24YAiABKAISMQoK",
+            "ZXJyb3JfY29kZRgDIAEoDjIdLnNlZWsuc3VuX3NlbnNvci52MS5FcnJvckNv",
+            "ZGUSDQoFY3JjMzIYBCABKA0qcQoJRXJyb3JDb2RlEgYKAk9LEAASFwoTU0VO",
+            "U09SX1JFQURfRkFJTFVSRRABEhUKEUNPTVBVVEFUSU9OX0VSUk9SEAISGQoV",
+            "Q09NTVVOSUNBVElPTl9USU1FT1VUEAMSEQoNVU5LTk9XTl9FUlJPUhAEYgZw",
+            "cm90bzM="));
       descriptor = pbr::FileDescriptor.FromGeneratedCode(descriptorData,
           new pbr::FileDescriptor[] { },
           new pbr::GeneratedClrTypeInfo(new[] {typeof(global::Seek.SunSensor.V1.ErrorCode), }, null, new pbr::GeneratedClrTypeInfo[] {
-            new pbr::GeneratedClrTypeInfo(typeof(global::Seek.SunSensor.V1.SunSensorData), global::Seek.SunSensor.V1.SunSensorData.Parser, new[]{ "UnitVectorX", "UnitVectorY", "UnitVectorZ", "StdDeviation", "ErrorCode", "Crc32" }, null, null, null, null)
+            new pbr::GeneratedClrTypeInfo(typeof(global::Seek.SunSensor.V1.Vector), global::Seek.SunSensor.V1.Vector.Parser, new[]{ "X", "Y", "Z" }, null, null, null, null),
+            new pbr::GeneratedClrTypeInfo(typeof(global::Seek.SunSensor.V1.SunSensorData), global::Seek.SunSensor.V1.SunSensorData.Parser, new[]{ "UnitVector", "StdDeviation", "ErrorCode", "Crc32" }, null, null, null, null)
           }));
     }
     #endregion
@@ -66,6 +68,278 @@ namespace Seek.SunSensor.V1 {
 
   #region Messages
   [global::System.Diagnostics.DebuggerDisplayAttribute("{ToString(),nq}")]
+  public sealed partial class Vector : pb::IMessage<Vector>
+  #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+      , pb::IBufferMessage
+  #endif
+  {
+    private static readonly pb::MessageParser<Vector> _parser = new pb::MessageParser<Vector>(() => new Vector());
+    private pb::UnknownFieldSet _unknownFields;
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public static pb::MessageParser<Vector> Parser { get { return _parser; } }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public static pbr::MessageDescriptor Descriptor {
+      get { return global::Seek.SunSensor.V1.SunSensorDataReflection.Descriptor.MessageTypes[0]; }
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    pbr::MessageDescriptor pb::IMessage.Descriptor {
+      get { return Descriptor; }
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public Vector() {
+      OnConstruction();
+    }
+
+    partial void OnConstruction();
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public Vector(Vector other) : this() {
+      x_ = other.x_;
+      y_ = other.y_;
+      z_ = other.z_;
+      _unknownFields = pb::UnknownFieldSet.Clone(other._unknownFields);
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public Vector Clone() {
+      return new Vector(this);
+    }
+
+    /// <summary>Field number for the "x" field.</summary>
+    public const int XFieldNumber = 1;
+    private float x_;
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public float X {
+      get { return x_; }
+      set {
+        x_ = value;
+      }
+    }
+
+    /// <summary>Field number for the "y" field.</summary>
+    public const int YFieldNumber = 2;
+    private float y_;
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public float Y {
+      get { return y_; }
+      set {
+        y_ = value;
+      }
+    }
+
+    /// <summary>Field number for the "z" field.</summary>
+    public const int ZFieldNumber = 3;
+    private float z_;
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public float Z {
+      get { return z_; }
+      set {
+        z_ = value;
+      }
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public override bool Equals(object other) {
+      return Equals(other as Vector);
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public bool Equals(Vector other) {
+      if (ReferenceEquals(other, null)) {
+        return false;
+      }
+      if (ReferenceEquals(other, this)) {
+        return true;
+      }
+      if (!pbc::ProtobufEqualityComparers.BitwiseSingleEqualityComparer.Equals(X, other.X)) return false;
+      if (!pbc::ProtobufEqualityComparers.BitwiseSingleEqualityComparer.Equals(Y, other.Y)) return false;
+      if (!pbc::ProtobufEqualityComparers.BitwiseSingleEqualityComparer.Equals(Z, other.Z)) return false;
+      return Equals(_unknownFields, other._unknownFields);
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public override int GetHashCode() {
+      int hash = 1;
+      if (X != 0F) hash ^= pbc::ProtobufEqualityComparers.BitwiseSingleEqualityComparer.GetHashCode(X);
+      if (Y != 0F) hash ^= pbc::ProtobufEqualityComparers.BitwiseSingleEqualityComparer.GetHashCode(Y);
+      if (Z != 0F) hash ^= pbc::ProtobufEqualityComparers.BitwiseSingleEqualityComparer.GetHashCode(Z);
+      if (_unknownFields != null) {
+        hash ^= _unknownFields.GetHashCode();
+      }
+      return hash;
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public override string ToString() {
+      return pb::JsonFormatter.ToDiagnosticString(this);
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public void WriteTo(pb::CodedOutputStream output) {
+    #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+      output.WriteRawMessage(this);
+    #else
+      if (X != 0F) {
+        output.WriteRawTag(13);
+        output.WriteFloat(X);
+      }
+      if (Y != 0F) {
+        output.WriteRawTag(21);
+        output.WriteFloat(Y);
+      }
+      if (Z != 0F) {
+        output.WriteRawTag(29);
+        output.WriteFloat(Z);
+      }
+      if (_unknownFields != null) {
+        _unknownFields.WriteTo(output);
+      }
+    #endif
+    }
+
+    #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    void pb::IBufferMessage.InternalWriteTo(ref pb::WriteContext output) {
+      if (X != 0F) {
+        output.WriteRawTag(13);
+        output.WriteFloat(X);
+      }
+      if (Y != 0F) {
+        output.WriteRawTag(21);
+        output.WriteFloat(Y);
+      }
+      if (Z != 0F) {
+        output.WriteRawTag(29);
+        output.WriteFloat(Z);
+      }
+      if (_unknownFields != null) {
+        _unknownFields.WriteTo(ref output);
+      }
+    }
+    #endif
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public int CalculateSize() {
+      int size = 0;
+      if (X != 0F) {
+        size += 1 + 4;
+      }
+      if (Y != 0F) {
+        size += 1 + 4;
+      }
+      if (Z != 0F) {
+        size += 1 + 4;
+      }
+      if (_unknownFields != null) {
+        size += _unknownFields.CalculateSize();
+      }
+      return size;
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public void MergeFrom(Vector other) {
+      if (other == null) {
+        return;
+      }
+      if (other.X != 0F) {
+        X = other.X;
+      }
+      if (other.Y != 0F) {
+        Y = other.Y;
+      }
+      if (other.Z != 0F) {
+        Z = other.Z;
+      }
+      _unknownFields = pb::UnknownFieldSet.MergeFrom(_unknownFields, other._unknownFields);
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public void MergeFrom(pb::CodedInputStream input) {
+    #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+      input.ReadRawMessage(this);
+    #else
+      uint tag;
+      while ((tag = input.ReadTag()) != 0) {
+      if ((tag & 7) == 4) {
+        // Abort on any end group tag.
+        return;
+      }
+      switch(tag) {
+          default:
+            _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, input);
+            break;
+          case 13: {
+            X = input.ReadFloat();
+            break;
+          }
+          case 21: {
+            Y = input.ReadFloat();
+            break;
+          }
+          case 29: {
+            Z = input.ReadFloat();
+            break;
+          }
+        }
+      }
+    #endif
+    }
+
+    #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    void pb::IBufferMessage.InternalMergeFrom(ref pb::ParseContext input) {
+      uint tag;
+      while ((tag = input.ReadTag()) != 0) {
+      if ((tag & 7) == 4) {
+        // Abort on any end group tag.
+        return;
+      }
+      switch(tag) {
+          default:
+            _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, ref input);
+            break;
+          case 13: {
+            X = input.ReadFloat();
+            break;
+          }
+          case 21: {
+            Y = input.ReadFloat();
+            break;
+          }
+          case 29: {
+            Z = input.ReadFloat();
+            break;
+          }
+        }
+      }
+    }
+    #endif
+
+  }
+
+  [global::System.Diagnostics.DebuggerDisplayAttribute("{ToString(),nq}")]
   public sealed partial class SunSensorData : pb::IMessage<SunSensorData>
   #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
       , pb::IBufferMessage
@@ -80,7 +354,7 @@ namespace Seek.SunSensor.V1 {
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public static pbr::MessageDescriptor Descriptor {
-      get { return global::Seek.SunSensor.V1.SunSensorDataReflection.Descriptor.MessageTypes[0]; }
+      get { return global::Seek.SunSensor.V1.SunSensorDataReflection.Descriptor.MessageTypes[1]; }
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
@@ -100,9 +374,7 @@ namespace Seek.SunSensor.V1 {
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public SunSensorData(SunSensorData other) : this() {
-      unitVectorX_ = other.unitVectorX_;
-      unitVectorY_ = other.unitVectorY_;
-      unitVectorZ_ = other.unitVectorZ_;
+      unitVector_ = other.unitVector_ != null ? other.unitVector_.Clone() : null;
       stdDeviation_ = other.stdDeviation_;
       errorCode_ = other.errorCode_;
       crc32_ = other.crc32_;
@@ -115,47 +387,23 @@ namespace Seek.SunSensor.V1 {
       return new SunSensorData(this);
     }
 
-    /// <summary>Field number for the "unit_vector_x" field.</summary>
-    public const int UnitVectorXFieldNumber = 1;
-    private float unitVectorX_;
+    /// <summary>Field number for the "unit_vector" field.</summary>
+    public const int UnitVectorFieldNumber = 1;
+    private global::Seek.SunSensor.V1.Vector unitVector_;
     /// <summary>
     /// Normalized direction vector components
     /// </summary>
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public float UnitVectorX {
-      get { return unitVectorX_; }
+    public global::Seek.SunSensor.V1.Vector UnitVector {
+      get { return unitVector_; }
       set {
-        unitVectorX_ = value;
-      }
-    }
-
-    /// <summary>Field number for the "unit_vector_y" field.</summary>
-    public const int UnitVectorYFieldNumber = 2;
-    private float unitVectorY_;
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public float UnitVectorY {
-      get { return unitVectorY_; }
-      set {
-        unitVectorY_ = value;
-      }
-    }
-
-    /// <summary>Field number for the "unit_vector_z" field.</summary>
-    public const int UnitVectorZFieldNumber = 3;
-    private float unitVectorZ_;
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public float UnitVectorZ {
-      get { return unitVectorZ_; }
-      set {
-        unitVectorZ_ = value;
+        unitVector_ = value;
       }
     }
 
     /// <summary>Field number for the "std_deviation" field.</summary>
-    public const int StdDeviationFieldNumber = 4;
+    public const int StdDeviationFieldNumber = 2;
     private float stdDeviation_;
     /// <summary>
     /// Standard deviation of the measurement in radians
@@ -170,7 +418,7 @@ namespace Seek.SunSensor.V1 {
     }
 
     /// <summary>Field number for the "error_code" field.</summary>
-    public const int ErrorCodeFieldNumber = 5;
+    public const int ErrorCodeFieldNumber = 3;
     private global::Seek.SunSensor.V1.ErrorCode errorCode_ = global::Seek.SunSensor.V1.ErrorCode.Ok;
     /// <summary>
     /// Error code indicating SunSensor status
@@ -185,7 +433,7 @@ namespace Seek.SunSensor.V1 {
     }
 
     /// <summary>Field number for the "crc32" field.</summary>
-    public const int Crc32FieldNumber = 6;
+    public const int Crc32FieldNumber = 4;
     private uint crc32_;
     /// <summary>
     /// CRC32 checksum computed over the serialized payload excluding this field
@@ -214,9 +462,7 @@ namespace Seek.SunSensor.V1 {
       if (ReferenceEquals(other, this)) {
         return true;
       }
-      if (!pbc::ProtobufEqualityComparers.BitwiseSingleEqualityComparer.Equals(UnitVectorX, other.UnitVectorX)) return false;
-      if (!pbc::ProtobufEqualityComparers.BitwiseSingleEqualityComparer.Equals(UnitVectorY, other.UnitVectorY)) return false;
-      if (!pbc::ProtobufEqualityComparers.BitwiseSingleEqualityComparer.Equals(UnitVectorZ, other.UnitVectorZ)) return false;
+      if (!object.Equals(UnitVector, other.UnitVector)) return false;
       if (!pbc::ProtobufEqualityComparers.BitwiseSingleEqualityComparer.Equals(StdDeviation, other.StdDeviation)) return false;
       if (ErrorCode != other.ErrorCode) return false;
       if (Crc32 != other.Crc32) return false;
@@ -227,9 +473,7 @@ namespace Seek.SunSensor.V1 {
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public override int GetHashCode() {
       int hash = 1;
-      if (UnitVectorX != 0F) hash ^= pbc::ProtobufEqualityComparers.BitwiseSingleEqualityComparer.GetHashCode(UnitVectorX);
-      if (UnitVectorY != 0F) hash ^= pbc::ProtobufEqualityComparers.BitwiseSingleEqualityComparer.GetHashCode(UnitVectorY);
-      if (UnitVectorZ != 0F) hash ^= pbc::ProtobufEqualityComparers.BitwiseSingleEqualityComparer.GetHashCode(UnitVectorZ);
+      if (unitVector_ != null) hash ^= UnitVector.GetHashCode();
       if (StdDeviation != 0F) hash ^= pbc::ProtobufEqualityComparers.BitwiseSingleEqualityComparer.GetHashCode(StdDeviation);
       if (ErrorCode != global::Seek.SunSensor.V1.ErrorCode.Ok) hash ^= ErrorCode.GetHashCode();
       if (Crc32 != 0) hash ^= Crc32.GetHashCode();
@@ -251,28 +495,20 @@ namespace Seek.SunSensor.V1 {
     #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
       output.WriteRawMessage(this);
     #else
-      if (UnitVectorX != 0F) {
-        output.WriteRawTag(13);
-        output.WriteFloat(UnitVectorX);
-      }
-      if (UnitVectorY != 0F) {
-        output.WriteRawTag(21);
-        output.WriteFloat(UnitVectorY);
-      }
-      if (UnitVectorZ != 0F) {
-        output.WriteRawTag(29);
-        output.WriteFloat(UnitVectorZ);
+      if (unitVector_ != null) {
+        output.WriteRawTag(10);
+        output.WriteMessage(UnitVector);
       }
       if (StdDeviation != 0F) {
-        output.WriteRawTag(37);
+        output.WriteRawTag(21);
         output.WriteFloat(StdDeviation);
       }
       if (ErrorCode != global::Seek.SunSensor.V1.ErrorCode.Ok) {
-        output.WriteRawTag(40);
+        output.WriteRawTag(24);
         output.WriteEnum((int) ErrorCode);
       }
       if (Crc32 != 0) {
-        output.WriteRawTag(48);
+        output.WriteRawTag(32);
         output.WriteUInt32(Crc32);
       }
       if (_unknownFields != null) {
@@ -285,28 +521,20 @@ namespace Seek.SunSensor.V1 {
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     void pb::IBufferMessage.InternalWriteTo(ref pb::WriteContext output) {
-      if (UnitVectorX != 0F) {
-        output.WriteRawTag(13);
-        output.WriteFloat(UnitVectorX);
-      }
-      if (UnitVectorY != 0F) {
-        output.WriteRawTag(21);
-        output.WriteFloat(UnitVectorY);
-      }
-      if (UnitVectorZ != 0F) {
-        output.WriteRawTag(29);
-        output.WriteFloat(UnitVectorZ);
+      if (unitVector_ != null) {
+        output.WriteRawTag(10);
+        output.WriteMessage(UnitVector);
       }
       if (StdDeviation != 0F) {
-        output.WriteRawTag(37);
+        output.WriteRawTag(21);
         output.WriteFloat(StdDeviation);
       }
       if (ErrorCode != global::Seek.SunSensor.V1.ErrorCode.Ok) {
-        output.WriteRawTag(40);
+        output.WriteRawTag(24);
         output.WriteEnum((int) ErrorCode);
       }
       if (Crc32 != 0) {
-        output.WriteRawTag(48);
+        output.WriteRawTag(32);
         output.WriteUInt32(Crc32);
       }
       if (_unknownFields != null) {
@@ -319,14 +547,8 @@ namespace Seek.SunSensor.V1 {
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public int CalculateSize() {
       int size = 0;
-      if (UnitVectorX != 0F) {
-        size += 1 + 4;
-      }
-      if (UnitVectorY != 0F) {
-        size += 1 + 4;
-      }
-      if (UnitVectorZ != 0F) {
-        size += 1 + 4;
+      if (unitVector_ != null) {
+        size += 1 + pb::CodedOutputStream.ComputeMessageSize(UnitVector);
       }
       if (StdDeviation != 0F) {
         size += 1 + 4;
@@ -349,14 +571,11 @@ namespace Seek.SunSensor.V1 {
       if (other == null) {
         return;
       }
-      if (other.UnitVectorX != 0F) {
-        UnitVectorX = other.UnitVectorX;
-      }
-      if (other.UnitVectorY != 0F) {
-        UnitVectorY = other.UnitVectorY;
-      }
-      if (other.UnitVectorZ != 0F) {
-        UnitVectorZ = other.UnitVectorZ;
+      if (other.unitVector_ != null) {
+        if (unitVector_ == null) {
+          UnitVector = new global::Seek.SunSensor.V1.Vector();
+        }
+        UnitVector.MergeFrom(other.UnitVector);
       }
       if (other.StdDeviation != 0F) {
         StdDeviation = other.StdDeviation;
@@ -386,27 +605,22 @@ namespace Seek.SunSensor.V1 {
           default:
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, input);
             break;
-          case 13: {
-            UnitVectorX = input.ReadFloat();
+          case 10: {
+            if (unitVector_ == null) {
+              UnitVector = new global::Seek.SunSensor.V1.Vector();
+            }
+            input.ReadMessage(UnitVector);
             break;
           }
           case 21: {
-            UnitVectorY = input.ReadFloat();
-            break;
-          }
-          case 29: {
-            UnitVectorZ = input.ReadFloat();
-            break;
-          }
-          case 37: {
             StdDeviation = input.ReadFloat();
             break;
           }
-          case 40: {
+          case 24: {
             ErrorCode = (global::Seek.SunSensor.V1.ErrorCode) input.ReadEnum();
             break;
           }
-          case 48: {
+          case 32: {
             Crc32 = input.ReadUInt32();
             break;
           }
@@ -429,27 +643,22 @@ namespace Seek.SunSensor.V1 {
           default:
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, ref input);
             break;
-          case 13: {
-            UnitVectorX = input.ReadFloat();
+          case 10: {
+            if (unitVector_ == null) {
+              UnitVector = new global::Seek.SunSensor.V1.Vector();
+            }
+            input.ReadMessage(UnitVector);
             break;
           }
           case 21: {
-            UnitVectorY = input.ReadFloat();
-            break;
-          }
-          case 29: {
-            UnitVectorZ = input.ReadFloat();
-            break;
-          }
-          case 37: {
             StdDeviation = input.ReadFloat();
             break;
           }
-          case 40: {
+          case 24: {
             ErrorCode = (global::Seek.SunSensor.V1.ErrorCode) input.ReadEnum();
             break;
           }
-          case 48: {
+          case 32: {
             Crc32 = input.ReadUInt32();
             break;
           }

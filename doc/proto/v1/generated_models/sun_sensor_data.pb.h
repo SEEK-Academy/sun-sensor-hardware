@@ -62,6 +62,10 @@ class SunSensorData;
 struct SunSensorDataDefaultTypeInternal;
 extern SunSensorDataDefaultTypeInternal _SunSensorData_default_instance_;
 extern const ::google::protobuf::internal::ClassDataFull SunSensorData_class_data_;
+class Vector;
+struct VectorDefaultTypeInternal;
+extern VectorDefaultTypeInternal _Vector_default_instance_;
+extern const ::google::protobuf::internal::ClassDataFull Vector_class_data_;
 }  // namespace v1
 }  // namespace sun_sensor
 }  // namespace seek
@@ -121,6 +125,221 @@ inline bool ErrorCode_Parse(
 
 // -------------------------------------------------------------------
 
+class Vector final : public ::google::protobuf::Message
+/* @@protoc_insertion_point(class_definition:seek.sun_sensor.v1.Vector) */ {
+ public:
+  inline Vector() : Vector(nullptr) {}
+  ~Vector() PROTOBUF_FINAL;
+
+#if defined(PROTOBUF_CUSTOM_VTABLE)
+  void operator delete(Vector* PROTOBUF_NONNULL msg, std::destroying_delete_t) {
+    SharedDtor(*msg);
+    ::google::protobuf::internal::SizedDelete(msg, sizeof(Vector));
+  }
+#endif
+
+  template <typename = void>
+  explicit PROTOBUF_CONSTEXPR Vector(::google::protobuf::internal::ConstantInitialized);
+
+  inline Vector(const Vector& from) : Vector(nullptr, from) {}
+  inline Vector(Vector&& from) noexcept
+      : Vector(nullptr, ::std::move(from)) {}
+  inline Vector& operator=(const Vector& from) {
+    CopyFrom(from);
+    return *this;
+  }
+  inline Vector& operator=(Vector&& from) noexcept {
+    if (this == &from) return *this;
+    if (::google::protobuf::internal::CanMoveWithInternalSwap(GetArena(), from.GetArena())) {
+      InternalSwap(&from);
+    } else {
+      CopyFrom(from);
+    }
+    return *this;
+  }
+
+  inline const ::google::protobuf::UnknownFieldSet& unknown_fields() const
+      ABSL_ATTRIBUTE_LIFETIME_BOUND {
+    return _internal_metadata_.unknown_fields<::google::protobuf::UnknownFieldSet>(::google::protobuf::UnknownFieldSet::default_instance);
+  }
+  inline ::google::protobuf::UnknownFieldSet* PROTOBUF_NONNULL mutable_unknown_fields()
+      ABSL_ATTRIBUTE_LIFETIME_BOUND {
+    return _internal_metadata_.mutable_unknown_fields<::google::protobuf::UnknownFieldSet>();
+  }
+
+  static const ::google::protobuf::Descriptor* PROTOBUF_NONNULL descriptor() {
+    return GetDescriptor();
+  }
+  static const ::google::protobuf::Descriptor* PROTOBUF_NONNULL GetDescriptor() {
+    return default_instance().GetMetadata().descriptor;
+  }
+  static const ::google::protobuf::Reflection* PROTOBUF_NONNULL GetReflection() {
+    return default_instance().GetMetadata().reflection;
+  }
+  static const Vector& default_instance() {
+    return *reinterpret_cast<const Vector*>(
+        &_Vector_default_instance_);
+  }
+  static constexpr int kIndexInFileMessages = 0;
+  friend void swap(Vector& a, Vector& b) { a.Swap(&b); }
+  inline void Swap(Vector* PROTOBUF_NONNULL other) {
+    if (other == this) return;
+    if (::google::protobuf::internal::CanUseInternalSwap(GetArena(), other->GetArena())) {
+      InternalSwap(other);
+    } else {
+      ::google::protobuf::internal::GenericSwap(this, other);
+    }
+  }
+  void UnsafeArenaSwap(Vector* PROTOBUF_NONNULL other) {
+    if (other == this) return;
+    ABSL_DCHECK(GetArena() == other->GetArena());
+    InternalSwap(other);
+  }
+
+  // implements Message ----------------------------------------------
+
+  Vector* PROTOBUF_NONNULL New(::google::protobuf::Arena* PROTOBUF_NULLABLE arena = nullptr) const {
+    return ::google::protobuf::Message::DefaultConstruct<Vector>(arena);
+  }
+  using ::google::protobuf::Message::CopyFrom;
+  void CopyFrom(const Vector& from);
+  using ::google::protobuf::Message::MergeFrom;
+  void MergeFrom(const Vector& from) { Vector::MergeImpl(*this, from); }
+
+  private:
+  static void MergeImpl(::google::protobuf::MessageLite& to_msg,
+                        const ::google::protobuf::MessageLite& from_msg);
+
+  public:
+  bool IsInitialized() const {
+    return true;
+  }
+  ABSL_ATTRIBUTE_REINITIALIZES void Clear() PROTOBUF_FINAL;
+  #if defined(PROTOBUF_CUSTOM_VTABLE)
+  private:
+  static ::size_t ByteSizeLong(const ::google::protobuf::MessageLite& msg);
+  static ::uint8_t* PROTOBUF_NONNULL _InternalSerialize(
+      const ::google::protobuf::MessageLite& msg, ::uint8_t* PROTOBUF_NONNULL target,
+      ::google::protobuf::io::EpsCopyOutputStream* PROTOBUF_NONNULL stream);
+
+  public:
+  ::size_t ByteSizeLong() const { return ByteSizeLong(*this); }
+  ::uint8_t* PROTOBUF_NONNULL _InternalSerialize(
+      ::uint8_t* PROTOBUF_NONNULL target,
+      ::google::protobuf::io::EpsCopyOutputStream* PROTOBUF_NONNULL stream) const {
+    return _InternalSerialize(*this, target, stream);
+  }
+  #else   // PROTOBUF_CUSTOM_VTABLE
+  ::size_t ByteSizeLong() const final;
+  ::uint8_t* PROTOBUF_NONNULL _InternalSerialize(
+      ::uint8_t* PROTOBUF_NONNULL target,
+      ::google::protobuf::io::EpsCopyOutputStream* PROTOBUF_NONNULL stream) const final;
+  #endif  // PROTOBUF_CUSTOM_VTABLE
+  int GetCachedSize() const { return _impl_._cached_size_.Get(); }
+
+  private:
+  void SharedCtor(::google::protobuf::Arena* PROTOBUF_NULLABLE arena);
+  static void SharedDtor(MessageLite& self);
+  void InternalSwap(Vector* PROTOBUF_NONNULL other);
+ private:
+  template <typename T>
+  friend ::absl::string_view(::google::protobuf::internal::GetAnyMessageName)();
+  static ::absl::string_view FullMessageName() { return "seek.sun_sensor.v1.Vector"; }
+
+ protected:
+  explicit Vector(::google::protobuf::Arena* PROTOBUF_NULLABLE arena);
+  Vector(::google::protobuf::Arena* PROTOBUF_NULLABLE arena, const Vector& from);
+  Vector(
+      ::google::protobuf::Arena* PROTOBUF_NULLABLE arena, Vector&& from) noexcept
+      : Vector(arena) {
+    *this = ::std::move(from);
+  }
+  const ::google::protobuf::internal::ClassData* PROTOBUF_NONNULL GetClassData() const PROTOBUF_FINAL;
+  static void* PROTOBUF_NONNULL PlacementNew_(
+      const void* PROTOBUF_NONNULL, void* PROTOBUF_NONNULL mem,
+      ::google::protobuf::Arena* PROTOBUF_NULLABLE arena);
+  static constexpr auto InternalNewImpl_();
+
+ public:
+  static constexpr auto InternalGenerateClassData_();
+
+  ::google::protobuf::Metadata GetMetadata() const;
+  // nested types ----------------------------------------------------
+
+  // accessors -------------------------------------------------------
+  enum : int {
+    kXFieldNumber = 1,
+    kYFieldNumber = 2,
+    kZFieldNumber = 3,
+  };
+  // float x = 1;
+  void clear_x() ;
+  float x() const;
+  void set_x(float value);
+
+  private:
+  float _internal_x() const;
+  void _internal_set_x(float value);
+
+  public:
+  // float y = 2;
+  void clear_y() ;
+  float y() const;
+  void set_y(float value);
+
+  private:
+  float _internal_y() const;
+  void _internal_set_y(float value);
+
+  public:
+  // float z = 3;
+  void clear_z() ;
+  float z() const;
+  void set_z(float value);
+
+  private:
+  float _internal_z() const;
+  void _internal_set_z(float value);
+
+  public:
+  // @@protoc_insertion_point(class_scope:seek.sun_sensor.v1.Vector)
+ private:
+  class _Internal;
+  friend class ::google::protobuf::internal::TcParser;
+  static const ::google::protobuf::internal::TcParseTable<2, 3,
+                                   0, 0,
+                                   2>
+      _table_;
+
+  friend class ::google::protobuf::MessageLite;
+  friend class ::google::protobuf::Arena;
+  template <typename T>
+  friend class ::google::protobuf::Arena::InternalHelper;
+  using InternalArenaConstructable_ = void;
+  using DestructorSkippable_ = void;
+  struct Impl_ {
+    inline explicit constexpr Impl_(::google::protobuf::internal::ConstantInitialized) noexcept;
+    inline explicit Impl_(
+        ::google::protobuf::internal::InternalVisibility visibility,
+        ::google::protobuf::Arena* PROTOBUF_NULLABLE arena);
+    inline explicit Impl_(
+        ::google::protobuf::internal::InternalVisibility visibility,
+        ::google::protobuf::Arena* PROTOBUF_NULLABLE arena, const Impl_& from,
+        const Vector& from_msg);
+    ::google::protobuf::internal::HasBits<1> _has_bits_;
+    ::google::protobuf::internal::CachedSize _cached_size_;
+    float x_;
+    float y_;
+    float z_;
+    PROTOBUF_TSAN_DECLARE_MEMBER
+  };
+  union { Impl_ _impl_; };
+  friend struct ::TableStruct_sun_5fsensor_5fdata_2eproto;
+};
+
+extern const ::google::protobuf::internal::ClassDataFull Vector_class_data_;
+// -------------------------------------------------------------------
+
 class SunSensorData final : public ::google::protobuf::Message
 /* @@protoc_insertion_point(class_definition:seek.sun_sensor.v1.SunSensorData) */ {
  public:
@@ -176,7 +395,7 @@ class SunSensorData final : public ::google::protobuf::Message
     return *reinterpret_cast<const SunSensorData*>(
         &_SunSensorData_default_instance_);
   }
-  static constexpr int kIndexInFileMessages = 0;
+  static constexpr int kIndexInFileMessages = 1;
   friend void swap(SunSensorData& a, SunSensorData& b) { a.Swap(&b); }
   inline void Swap(SunSensorData* PROTOBUF_NONNULL other) {
     if (other == this) return;
@@ -264,44 +483,27 @@ class SunSensorData final : public ::google::protobuf::Message
 
   // accessors -------------------------------------------------------
   enum : int {
-    kUnitVectorXFieldNumber = 1,
-    kUnitVectorYFieldNumber = 2,
-    kUnitVectorZFieldNumber = 3,
-    kStdDeviationFieldNumber = 4,
-    kErrorCodeFieldNumber = 5,
-    kCrc32FieldNumber = 6,
+    kUnitVectorFieldNumber = 1,
+    kStdDeviationFieldNumber = 2,
+    kErrorCodeFieldNumber = 3,
+    kCrc32FieldNumber = 4,
   };
-  // float unit_vector_x = 1;
-  void clear_unit_vector_x() ;
-  float unit_vector_x() const;
-  void set_unit_vector_x(float value);
+  // .seek.sun_sensor.v1.Vector unit_vector = 1;
+  bool has_unit_vector() const;
+  void clear_unit_vector() ;
+  const ::seek::sun_sensor::v1::Vector& unit_vector() const;
+  [[nodiscard]] ::seek::sun_sensor::v1::Vector* PROTOBUF_NULLABLE release_unit_vector();
+  ::seek::sun_sensor::v1::Vector* PROTOBUF_NONNULL mutable_unit_vector();
+  void set_allocated_unit_vector(::seek::sun_sensor::v1::Vector* PROTOBUF_NULLABLE value);
+  void unsafe_arena_set_allocated_unit_vector(::seek::sun_sensor::v1::Vector* PROTOBUF_NULLABLE value);
+  ::seek::sun_sensor::v1::Vector* PROTOBUF_NULLABLE unsafe_arena_release_unit_vector();
 
   private:
-  float _internal_unit_vector_x() const;
-  void _internal_set_unit_vector_x(float value);
+  const ::seek::sun_sensor::v1::Vector& _internal_unit_vector() const;
+  ::seek::sun_sensor::v1::Vector* PROTOBUF_NONNULL _internal_mutable_unit_vector();
 
   public:
-  // float unit_vector_y = 2;
-  void clear_unit_vector_y() ;
-  float unit_vector_y() const;
-  void set_unit_vector_y(float value);
-
-  private:
-  float _internal_unit_vector_y() const;
-  void _internal_set_unit_vector_y(float value);
-
-  public:
-  // float unit_vector_z = 3;
-  void clear_unit_vector_z() ;
-  float unit_vector_z() const;
-  void set_unit_vector_z(float value);
-
-  private:
-  float _internal_unit_vector_z() const;
-  void _internal_set_unit_vector_z(float value);
-
-  public:
-  // float std_deviation = 4;
+  // float std_deviation = 2;
   void clear_std_deviation() ;
   float std_deviation() const;
   void set_std_deviation(float value);
@@ -311,7 +513,7 @@ class SunSensorData final : public ::google::protobuf::Message
   void _internal_set_std_deviation(float value);
 
   public:
-  // .seek.sun_sensor.v1.ErrorCode error_code = 5;
+  // .seek.sun_sensor.v1.ErrorCode error_code = 3;
   void clear_error_code() ;
   ::seek::sun_sensor::v1::ErrorCode error_code() const;
   void set_error_code(::seek::sun_sensor::v1::ErrorCode value);
@@ -321,7 +523,7 @@ class SunSensorData final : public ::google::protobuf::Message
   void _internal_set_error_code(::seek::sun_sensor::v1::ErrorCode value);
 
   public:
-  // uint32 crc32 = 6;
+  // uint32 crc32 = 4;
   void clear_crc32() ;
   ::uint32_t crc32() const;
   void set_crc32(::uint32_t value);
@@ -335,8 +537,8 @@ class SunSensorData final : public ::google::protobuf::Message
  private:
   class _Internal;
   friend class ::google::protobuf::internal::TcParser;
-  static const ::google::protobuf::internal::TcParseTable<3, 6,
-                                   0, 0,
+  static const ::google::protobuf::internal::TcParseTable<2, 4,
+                                   1, 0,
                                    2>
       _table_;
 
@@ -357,9 +559,7 @@ class SunSensorData final : public ::google::protobuf::Message
         const SunSensorData& from_msg);
     ::google::protobuf::internal::HasBits<1> _has_bits_;
     ::google::protobuf::internal::CachedSize _cached_size_;
-    float unit_vector_x_;
-    float unit_vector_y_;
-    float unit_vector_z_;
+    ::seek::sun_sensor::v1::Vector* PROTOBUF_NULLABLE unit_vector_;
     float std_deviation_;
     int error_code_;
     ::uint32_t crc32_;
@@ -385,85 +585,187 @@ extern const ::google::protobuf::internal::ClassDataFull SunSensorData_class_dat
 #endif  // __GNUC__
 // -------------------------------------------------------------------
 
-// SunSensorData
+// Vector
 
-// float unit_vector_x = 1;
-inline void SunSensorData::clear_unit_vector_x() {
+// float x = 1;
+inline void Vector::clear_x() {
   ::google::protobuf::internal::TSanWrite(&_impl_);
-  _impl_.unit_vector_x_ = 0;
+  _impl_.x_ = 0;
   _impl_._has_bits_[0] &= ~0x00000001u;
 }
-inline float SunSensorData::unit_vector_x() const {
-  // @@protoc_insertion_point(field_get:seek.sun_sensor.v1.SunSensorData.unit_vector_x)
-  return _internal_unit_vector_x();
+inline float Vector::x() const {
+  // @@protoc_insertion_point(field_get:seek.sun_sensor.v1.Vector.x)
+  return _internal_x();
 }
-inline void SunSensorData::set_unit_vector_x(float value) {
-  _internal_set_unit_vector_x(value);
+inline void Vector::set_x(float value) {
+  _internal_set_x(value);
   _impl_._has_bits_[0] |= 0x00000001u;
-  // @@protoc_insertion_point(field_set:seek.sun_sensor.v1.SunSensorData.unit_vector_x)
+  // @@protoc_insertion_point(field_set:seek.sun_sensor.v1.Vector.x)
 }
-inline float SunSensorData::_internal_unit_vector_x() const {
+inline float Vector::_internal_x() const {
   ::google::protobuf::internal::TSanRead(&_impl_);
-  return _impl_.unit_vector_x_;
+  return _impl_.x_;
 }
-inline void SunSensorData::_internal_set_unit_vector_x(float value) {
+inline void Vector::_internal_set_x(float value) {
   ::google::protobuf::internal::TSanWrite(&_impl_);
-  _impl_.unit_vector_x_ = value;
+  _impl_.x_ = value;
 }
 
-// float unit_vector_y = 2;
-inline void SunSensorData::clear_unit_vector_y() {
+// float y = 2;
+inline void Vector::clear_y() {
   ::google::protobuf::internal::TSanWrite(&_impl_);
-  _impl_.unit_vector_y_ = 0;
+  _impl_.y_ = 0;
   _impl_._has_bits_[0] &= ~0x00000002u;
 }
-inline float SunSensorData::unit_vector_y() const {
-  // @@protoc_insertion_point(field_get:seek.sun_sensor.v1.SunSensorData.unit_vector_y)
-  return _internal_unit_vector_y();
+inline float Vector::y() const {
+  // @@protoc_insertion_point(field_get:seek.sun_sensor.v1.Vector.y)
+  return _internal_y();
 }
-inline void SunSensorData::set_unit_vector_y(float value) {
-  _internal_set_unit_vector_y(value);
+inline void Vector::set_y(float value) {
+  _internal_set_y(value);
   _impl_._has_bits_[0] |= 0x00000002u;
-  // @@protoc_insertion_point(field_set:seek.sun_sensor.v1.SunSensorData.unit_vector_y)
+  // @@protoc_insertion_point(field_set:seek.sun_sensor.v1.Vector.y)
 }
-inline float SunSensorData::_internal_unit_vector_y() const {
+inline float Vector::_internal_y() const {
   ::google::protobuf::internal::TSanRead(&_impl_);
-  return _impl_.unit_vector_y_;
+  return _impl_.y_;
 }
-inline void SunSensorData::_internal_set_unit_vector_y(float value) {
+inline void Vector::_internal_set_y(float value) {
   ::google::protobuf::internal::TSanWrite(&_impl_);
-  _impl_.unit_vector_y_ = value;
+  _impl_.y_ = value;
 }
 
-// float unit_vector_z = 3;
-inline void SunSensorData::clear_unit_vector_z() {
+// float z = 3;
+inline void Vector::clear_z() {
   ::google::protobuf::internal::TSanWrite(&_impl_);
-  _impl_.unit_vector_z_ = 0;
+  _impl_.z_ = 0;
   _impl_._has_bits_[0] &= ~0x00000004u;
 }
-inline float SunSensorData::unit_vector_z() const {
-  // @@protoc_insertion_point(field_get:seek.sun_sensor.v1.SunSensorData.unit_vector_z)
-  return _internal_unit_vector_z();
+inline float Vector::z() const {
+  // @@protoc_insertion_point(field_get:seek.sun_sensor.v1.Vector.z)
+  return _internal_z();
 }
-inline void SunSensorData::set_unit_vector_z(float value) {
-  _internal_set_unit_vector_z(value);
+inline void Vector::set_z(float value) {
+  _internal_set_z(value);
   _impl_._has_bits_[0] |= 0x00000004u;
-  // @@protoc_insertion_point(field_set:seek.sun_sensor.v1.SunSensorData.unit_vector_z)
+  // @@protoc_insertion_point(field_set:seek.sun_sensor.v1.Vector.z)
 }
-inline float SunSensorData::_internal_unit_vector_z() const {
+inline float Vector::_internal_z() const {
   ::google::protobuf::internal::TSanRead(&_impl_);
-  return _impl_.unit_vector_z_;
+  return _impl_.z_;
 }
-inline void SunSensorData::_internal_set_unit_vector_z(float value) {
+inline void Vector::_internal_set_z(float value) {
   ::google::protobuf::internal::TSanWrite(&_impl_);
-  _impl_.unit_vector_z_ = value;
+  _impl_.z_ = value;
 }
 
-// float std_deviation = 4;
+// -------------------------------------------------------------------
+
+// SunSensorData
+
+// .seek.sun_sensor.v1.Vector unit_vector = 1;
+inline bool SunSensorData::has_unit_vector() const {
+  bool value = (_impl_._has_bits_[0] & 0x00000001u) != 0;
+  PROTOBUF_ASSUME(!value || _impl_.unit_vector_ != nullptr);
+  return value;
+}
+inline void SunSensorData::clear_unit_vector() {
+  ::google::protobuf::internal::TSanWrite(&_impl_);
+  if (_impl_.unit_vector_ != nullptr) _impl_.unit_vector_->Clear();
+  _impl_._has_bits_[0] &= ~0x00000001u;
+}
+inline const ::seek::sun_sensor::v1::Vector& SunSensorData::_internal_unit_vector() const {
+  ::google::protobuf::internal::TSanRead(&_impl_);
+  const ::seek::sun_sensor::v1::Vector* p = _impl_.unit_vector_;
+  return p != nullptr ? *p : reinterpret_cast<const ::seek::sun_sensor::v1::Vector&>(::seek::sun_sensor::v1::_Vector_default_instance_);
+}
+inline const ::seek::sun_sensor::v1::Vector& SunSensorData::unit_vector() const ABSL_ATTRIBUTE_LIFETIME_BOUND {
+  // @@protoc_insertion_point(field_get:seek.sun_sensor.v1.SunSensorData.unit_vector)
+  return _internal_unit_vector();
+}
+inline void SunSensorData::unsafe_arena_set_allocated_unit_vector(
+    ::seek::sun_sensor::v1::Vector* PROTOBUF_NULLABLE value) {
+  ::google::protobuf::internal::TSanWrite(&_impl_);
+  if (GetArena() == nullptr) {
+    delete reinterpret_cast<::google::protobuf::MessageLite*>(_impl_.unit_vector_);
+  }
+  _impl_.unit_vector_ = reinterpret_cast<::seek::sun_sensor::v1::Vector*>(value);
+  if (value != nullptr) {
+    _impl_._has_bits_[0] |= 0x00000001u;
+  } else {
+    _impl_._has_bits_[0] &= ~0x00000001u;
+  }
+  // @@protoc_insertion_point(field_unsafe_arena_set_allocated:seek.sun_sensor.v1.SunSensorData.unit_vector)
+}
+inline ::seek::sun_sensor::v1::Vector* PROTOBUF_NULLABLE SunSensorData::release_unit_vector() {
+  ::google::protobuf::internal::TSanWrite(&_impl_);
+
+  _impl_._has_bits_[0] &= ~0x00000001u;
+  ::seek::sun_sensor::v1::Vector* released = _impl_.unit_vector_;
+  _impl_.unit_vector_ = nullptr;
+  if (::google::protobuf::internal::DebugHardenForceCopyInRelease()) {
+    auto* old = reinterpret_cast<::google::protobuf::MessageLite*>(released);
+    released = ::google::protobuf::internal::DuplicateIfNonNull(released);
+    if (GetArena() == nullptr) {
+      delete old;
+    }
+  } else {
+    if (GetArena() != nullptr) {
+      released = ::google::protobuf::internal::DuplicateIfNonNull(released);
+    }
+  }
+  return released;
+}
+inline ::seek::sun_sensor::v1::Vector* PROTOBUF_NULLABLE SunSensorData::unsafe_arena_release_unit_vector() {
+  ::google::protobuf::internal::TSanWrite(&_impl_);
+  // @@protoc_insertion_point(field_release:seek.sun_sensor.v1.SunSensorData.unit_vector)
+
+  _impl_._has_bits_[0] &= ~0x00000001u;
+  ::seek::sun_sensor::v1::Vector* temp = _impl_.unit_vector_;
+  _impl_.unit_vector_ = nullptr;
+  return temp;
+}
+inline ::seek::sun_sensor::v1::Vector* PROTOBUF_NONNULL SunSensorData::_internal_mutable_unit_vector() {
+  ::google::protobuf::internal::TSanWrite(&_impl_);
+  if (_impl_.unit_vector_ == nullptr) {
+    auto* p = ::google::protobuf::Message::DefaultConstruct<::seek::sun_sensor::v1::Vector>(GetArena());
+    _impl_.unit_vector_ = reinterpret_cast<::seek::sun_sensor::v1::Vector*>(p);
+  }
+  return _impl_.unit_vector_;
+}
+inline ::seek::sun_sensor::v1::Vector* PROTOBUF_NONNULL SunSensorData::mutable_unit_vector()
+    ABSL_ATTRIBUTE_LIFETIME_BOUND {
+  _impl_._has_bits_[0] |= 0x00000001u;
+  ::seek::sun_sensor::v1::Vector* _msg = _internal_mutable_unit_vector();
+  // @@protoc_insertion_point(field_mutable:seek.sun_sensor.v1.SunSensorData.unit_vector)
+  return _msg;
+}
+inline void SunSensorData::set_allocated_unit_vector(::seek::sun_sensor::v1::Vector* PROTOBUF_NULLABLE value) {
+  ::google::protobuf::Arena* message_arena = GetArena();
+  ::google::protobuf::internal::TSanWrite(&_impl_);
+  if (message_arena == nullptr) {
+    delete reinterpret_cast<::google::protobuf::MessageLite*>(_impl_.unit_vector_);
+  }
+
+  if (value != nullptr) {
+    ::google::protobuf::Arena* submessage_arena = value->GetArena();
+    if (message_arena != submessage_arena) {
+      value = ::google::protobuf::internal::GetOwnedMessage(message_arena, value, submessage_arena);
+    }
+    _impl_._has_bits_[0] |= 0x00000001u;
+  } else {
+    _impl_._has_bits_[0] &= ~0x00000001u;
+  }
+
+  _impl_.unit_vector_ = reinterpret_cast<::seek::sun_sensor::v1::Vector*>(value);
+  // @@protoc_insertion_point(field_set_allocated:seek.sun_sensor.v1.SunSensorData.unit_vector)
+}
+
+// float std_deviation = 2;
 inline void SunSensorData::clear_std_deviation() {
   ::google::protobuf::internal::TSanWrite(&_impl_);
   _impl_.std_deviation_ = 0;
-  _impl_._has_bits_[0] &= ~0x00000008u;
+  _impl_._has_bits_[0] &= ~0x00000002u;
 }
 inline float SunSensorData::std_deviation() const {
   // @@protoc_insertion_point(field_get:seek.sun_sensor.v1.SunSensorData.std_deviation)
@@ -471,7 +773,7 @@ inline float SunSensorData::std_deviation() const {
 }
 inline void SunSensorData::set_std_deviation(float value) {
   _internal_set_std_deviation(value);
-  _impl_._has_bits_[0] |= 0x00000008u;
+  _impl_._has_bits_[0] |= 0x00000002u;
   // @@protoc_insertion_point(field_set:seek.sun_sensor.v1.SunSensorData.std_deviation)
 }
 inline float SunSensorData::_internal_std_deviation() const {
@@ -483,11 +785,11 @@ inline void SunSensorData::_internal_set_std_deviation(float value) {
   _impl_.std_deviation_ = value;
 }
 
-// .seek.sun_sensor.v1.ErrorCode error_code = 5;
+// .seek.sun_sensor.v1.ErrorCode error_code = 3;
 inline void SunSensorData::clear_error_code() {
   ::google::protobuf::internal::TSanWrite(&_impl_);
   _impl_.error_code_ = 0;
-  _impl_._has_bits_[0] &= ~0x00000010u;
+  _impl_._has_bits_[0] &= ~0x00000004u;
 }
 inline ::seek::sun_sensor::v1::ErrorCode SunSensorData::error_code() const {
   // @@protoc_insertion_point(field_get:seek.sun_sensor.v1.SunSensorData.error_code)
@@ -495,7 +797,7 @@ inline ::seek::sun_sensor::v1::ErrorCode SunSensorData::error_code() const {
 }
 inline void SunSensorData::set_error_code(::seek::sun_sensor::v1::ErrorCode value) {
   _internal_set_error_code(value);
-  _impl_._has_bits_[0] |= 0x00000010u;
+  _impl_._has_bits_[0] |= 0x00000004u;
   // @@protoc_insertion_point(field_set:seek.sun_sensor.v1.SunSensorData.error_code)
 }
 inline ::seek::sun_sensor::v1::ErrorCode SunSensorData::_internal_error_code() const {
@@ -507,11 +809,11 @@ inline void SunSensorData::_internal_set_error_code(::seek::sun_sensor::v1::Erro
   _impl_.error_code_ = value;
 }
 
-// uint32 crc32 = 6;
+// uint32 crc32 = 4;
 inline void SunSensorData::clear_crc32() {
   ::google::protobuf::internal::TSanWrite(&_impl_);
   _impl_.crc32_ = 0u;
-  _impl_._has_bits_[0] &= ~0x00000020u;
+  _impl_._has_bits_[0] &= ~0x00000008u;
 }
 inline ::uint32_t SunSensorData::crc32() const {
   // @@protoc_insertion_point(field_get:seek.sun_sensor.v1.SunSensorData.crc32)
@@ -519,7 +821,7 @@ inline ::uint32_t SunSensorData::crc32() const {
 }
 inline void SunSensorData::set_crc32(::uint32_t value) {
   _internal_set_crc32(value);
-  _impl_._has_bits_[0] |= 0x00000020u;
+  _impl_._has_bits_[0] |= 0x00000008u;
   // @@protoc_insertion_point(field_set:seek.sun_sensor.v1.SunSensorData.crc32)
 }
 inline ::uint32_t SunSensorData::_internal_crc32() const {

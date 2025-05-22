@@ -28,12 +28,37 @@ namespace seek {
 namespace sun_sensor {
 namespace v1 {
 
+inline constexpr Vector::Impl_::Impl_(
+    ::_pbi::ConstantInitialized) noexcept
+      : _cached_size_{0},
+        x_{0},
+        y_{0},
+        z_{0} {}
+
+template <typename>
+PROTOBUF_CONSTEXPR Vector::Vector(::_pbi::ConstantInitialized)
+#if defined(PROTOBUF_CUSTOM_VTABLE)
+    : ::google::protobuf::Message(Vector_class_data_.base()),
+#else   // PROTOBUF_CUSTOM_VTABLE
+    : ::google::protobuf::Message(),
+#endif  // PROTOBUF_CUSTOM_VTABLE
+      _impl_(::_pbi::ConstantInitialized()) {
+}
+struct VectorDefaultTypeInternal {
+  PROTOBUF_CONSTEXPR VectorDefaultTypeInternal() : _instance(::_pbi::ConstantInitialized{}) {}
+  ~VectorDefaultTypeInternal() {}
+  union {
+    Vector _instance;
+  };
+};
+
+PROTOBUF_ATTRIBUTE_NO_DESTROY PROTOBUF_CONSTINIT
+    PROTOBUF_ATTRIBUTE_INIT_PRIORITY1 VectorDefaultTypeInternal _Vector_default_instance_;
+
 inline constexpr SunSensorData::Impl_::Impl_(
     ::_pbi::ConstantInitialized) noexcept
       : _cached_size_{0},
-        unit_vector_x_{0},
-        unit_vector_y_{0},
-        unit_vector_z_{0},
+        unit_vector_{nullptr},
         std_deviation_{0},
         error_code_{static_cast< ::seek::sun_sensor::v1::ErrorCode >(0)},
         crc32_{0u} {}
@@ -68,11 +93,18 @@ const ::uint32_t
     TableStruct_sun_5fsensor_5fdata_2eproto::offsets[] ABSL_ATTRIBUTE_SECTION_VARIABLE(
         protodesc_cold) = {
         0x081, // bitmap
+        PROTOBUF_FIELD_OFFSET(::seek::sun_sensor::v1::Vector, _impl_._has_bits_),
+        6, // hasbit index offset
+        PROTOBUF_FIELD_OFFSET(::seek::sun_sensor::v1::Vector, _impl_.x_),
+        PROTOBUF_FIELD_OFFSET(::seek::sun_sensor::v1::Vector, _impl_.y_),
+        PROTOBUF_FIELD_OFFSET(::seek::sun_sensor::v1::Vector, _impl_.z_),
+        0,
+        1,
+        2,
+        0x081, // bitmap
         PROTOBUF_FIELD_OFFSET(::seek::sun_sensor::v1::SunSensorData, _impl_._has_bits_),
-        9, // hasbit index offset
-        PROTOBUF_FIELD_OFFSET(::seek::sun_sensor::v1::SunSensorData, _impl_.unit_vector_x_),
-        PROTOBUF_FIELD_OFFSET(::seek::sun_sensor::v1::SunSensorData, _impl_.unit_vector_y_),
-        PROTOBUF_FIELD_OFFSET(::seek::sun_sensor::v1::SunSensorData, _impl_.unit_vector_z_),
+        7, // hasbit index offset
+        PROTOBUF_FIELD_OFFSET(::seek::sun_sensor::v1::SunSensorData, _impl_.unit_vector_),
         PROTOBUF_FIELD_OFFSET(::seek::sun_sensor::v1::SunSensorData, _impl_.std_deviation_),
         PROTOBUF_FIELD_OFFSET(::seek::sun_sensor::v1::SunSensorData, _impl_.error_code_),
         PROTOBUF_FIELD_OFFSET(::seek::sun_sensor::v1::SunSensorData, _impl_.crc32_),
@@ -80,40 +112,41 @@ const ::uint32_t
         1,
         2,
         3,
-        4,
-        5,
 };
 
 static const ::_pbi::MigrationSchema
     schemas[] ABSL_ATTRIBUTE_SECTION_VARIABLE(protodesc_cold) = {
-        {0, sizeof(::seek::sun_sensor::v1::SunSensorData)},
+        {0, sizeof(::seek::sun_sensor::v1::Vector)},
+        {9, sizeof(::seek::sun_sensor::v1::SunSensorData)},
 };
 static const ::_pb::Message* PROTOBUF_NONNULL const file_default_instances[] = {
+    &::seek::sun_sensor::v1::_Vector_default_instance_._instance,
     &::seek::sun_sensor::v1::_SunSensorData_default_instance_._instance,
 };
 const char descriptor_table_protodef_sun_5fsensor_5fdata_2eproto[] ABSL_ATTRIBUTE_SECTION_VARIABLE(
     protodesc_cold) = {
     "\n\025sun_sensor_data.proto\022\022seek.sun_sensor"
-    ".v1\"\255\001\n\rSunSensorData\022\025\n\runit_vector_x\030\001"
-    " \001(\002\022\025\n\runit_vector_y\030\002 \001(\002\022\025\n\runit_vect"
-    "or_z\030\003 \001(\002\022\025\n\rstd_deviation\030\004 \001(\002\0221\n\nerr"
-    "or_code\030\005 \001(\0162\035.seek.sun_sensor.v1.Error"
-    "Code\022\r\n\005crc32\030\006 \001(\r*q\n\tErrorCode\022\006\n\002OK\020\000"
-    "\022\027\n\023SENSOR_READ_FAILURE\020\001\022\025\n\021COMPUTATION"
-    "_ERROR\020\002\022\031\n\025COMMUNICATION_TIMEOUT\020\003\022\021\n\rU"
-    "NKNOWN_ERROR\020\004b\006proto3"
+    ".v1\")\n\006Vector\022\t\n\001x\030\001 \001(\002\022\t\n\001y\030\002 \001(\002\022\t\n\001z"
+    "\030\003 \001(\002\"\231\001\n\rSunSensorData\022/\n\013unit_vector\030"
+    "\001 \001(\0132\032.seek.sun_sensor.v1.Vector\022\025\n\rstd"
+    "_deviation\030\002 \001(\002\0221\n\nerror_code\030\003 \001(\0162\035.s"
+    "eek.sun_sensor.v1.ErrorCode\022\r\n\005crc32\030\004 \001"
+    "(\r*q\n\tErrorCode\022\006\n\002OK\020\000\022\027\n\023SENSOR_READ_F"
+    "AILURE\020\001\022\025\n\021COMPUTATION_ERROR\020\002\022\031\n\025COMMU"
+    "NICATION_TIMEOUT\020\003\022\021\n\rUNKNOWN_ERROR\020\004b\006p"
+    "roto3"
 };
 static ::absl::once_flag descriptor_table_sun_5fsensor_5fdata_2eproto_once;
 PROTOBUF_CONSTINIT const ::_pbi::DescriptorTable descriptor_table_sun_5fsensor_5fdata_2eproto = {
     false,
     false,
-    342,
+    365,
     descriptor_table_protodef_sun_5fsensor_5fdata_2eproto,
     "sun_sensor_data.proto",
     &descriptor_table_sun_5fsensor_5fdata_2eproto_once,
     nullptr,
     0,
-    1,
+    2,
     schemas,
     file_default_instances,
     TableStruct_sun_5fsensor_5fdata_2eproto::offsets,
@@ -129,6 +162,311 @@ const ::google::protobuf::EnumDescriptor* PROTOBUF_NONNULL ErrorCode_descriptor(
 }
 PROTOBUF_CONSTINIT const uint32_t ErrorCode_internal_data_[] = {
     327680u, 0u, };
+// ===================================================================
+
+class Vector::_Internal {
+ public:
+  using HasBits =
+      decltype(::std::declval<Vector>()._impl_._has_bits_);
+  static constexpr ::int32_t kHasBitsOffset =
+      8 * PROTOBUF_FIELD_OFFSET(Vector, _impl_._has_bits_);
+};
+
+Vector::Vector(::google::protobuf::Arena* PROTOBUF_NULLABLE arena)
+#if defined(PROTOBUF_CUSTOM_VTABLE)
+    : ::google::protobuf::Message(arena, Vector_class_data_.base()) {
+#else   // PROTOBUF_CUSTOM_VTABLE
+    : ::google::protobuf::Message(arena) {
+#endif  // PROTOBUF_CUSTOM_VTABLE
+  SharedCtor(arena);
+  // @@protoc_insertion_point(arena_constructor:seek.sun_sensor.v1.Vector)
+}
+Vector::Vector(
+    ::google::protobuf::Arena* PROTOBUF_NULLABLE arena, const Vector& from)
+#if defined(PROTOBUF_CUSTOM_VTABLE)
+    : ::google::protobuf::Message(arena, Vector_class_data_.base()),
+#else   // PROTOBUF_CUSTOM_VTABLE
+    : ::google::protobuf::Message(arena),
+#endif  // PROTOBUF_CUSTOM_VTABLE
+      _impl_(from._impl_) {
+  _internal_metadata_.MergeFrom<::google::protobuf::UnknownFieldSet>(
+      from._internal_metadata_);
+}
+PROTOBUF_NDEBUG_INLINE Vector::Impl_::Impl_(
+    ::google::protobuf::internal::InternalVisibility visibility,
+    ::google::protobuf::Arena* PROTOBUF_NULLABLE arena)
+      : _cached_size_{0} {}
+
+inline void Vector::SharedCtor(::_pb::Arena* PROTOBUF_NULLABLE arena) {
+  new (&_impl_) Impl_(internal_visibility(), arena);
+  ::memset(reinterpret_cast<char *>(&_impl_) +
+               offsetof(Impl_, x_),
+           0,
+           offsetof(Impl_, z_) -
+               offsetof(Impl_, x_) +
+               sizeof(Impl_::z_));
+}
+Vector::~Vector() {
+  // @@protoc_insertion_point(destructor:seek.sun_sensor.v1.Vector)
+  SharedDtor(*this);
+}
+inline void Vector::SharedDtor(MessageLite& self) {
+  Vector& this_ = static_cast<Vector&>(self);
+  this_._internal_metadata_.Delete<::google::protobuf::UnknownFieldSet>();
+  ABSL_DCHECK(this_.GetArena() == nullptr);
+  this_._impl_.~Impl_();
+}
+
+inline void* PROTOBUF_NONNULL Vector::PlacementNew_(
+    const void* PROTOBUF_NONNULL, void* PROTOBUF_NONNULL mem,
+    ::google::protobuf::Arena* PROTOBUF_NULLABLE arena) {
+  return ::new (mem) Vector(arena);
+}
+constexpr auto Vector::InternalNewImpl_() {
+  return ::google::protobuf::internal::MessageCreator::ZeroInit(sizeof(Vector),
+                                            alignof(Vector));
+}
+constexpr auto Vector::InternalGenerateClassData_() {
+  return ::google::protobuf::internal::ClassDataFull{
+      ::google::protobuf::internal::ClassData{
+          &_Vector_default_instance_._instance,
+          &_table_.header,
+          nullptr,  // OnDemandRegisterArenaDtor
+          nullptr,  // IsInitialized
+          &Vector::MergeImpl,
+          ::google::protobuf::Message::GetNewImpl<Vector>(),
+#if defined(PROTOBUF_CUSTOM_VTABLE)
+          &Vector::SharedDtor,
+          ::google::protobuf::Message::GetClearImpl<Vector>(), &Vector::ByteSizeLong,
+              &Vector::_InternalSerialize,
+#endif  // PROTOBUF_CUSTOM_VTABLE
+          PROTOBUF_FIELD_OFFSET(Vector, _impl_._cached_size_),
+          false,
+      },
+      &Vector::kDescriptorMethods,
+      &descriptor_table_sun_5fsensor_5fdata_2eproto,
+      nullptr,  // tracker
+  };
+}
+
+PROTOBUF_CONSTINIT PROTOBUF_ATTRIBUTE_INIT_PRIORITY1 const
+    ::google::protobuf::internal::ClassDataFull Vector_class_data_ =
+        Vector::InternalGenerateClassData_();
+
+PROTOBUF_ATTRIBUTE_WEAK const ::google::protobuf::internal::ClassData* PROTOBUF_NONNULL
+Vector::GetClassData() const {
+  ::google::protobuf::internal::PrefetchToLocalCache(&Vector_class_data_);
+  ::google::protobuf::internal::PrefetchToLocalCache(Vector_class_data_.tc_table);
+  return Vector_class_data_.base();
+}
+PROTOBUF_CONSTINIT PROTOBUF_ATTRIBUTE_INIT_PRIORITY1
+const ::_pbi::TcParseTable<2, 3, 0, 0, 2>
+Vector::_table_ = {
+  {
+    PROTOBUF_FIELD_OFFSET(Vector, _impl_._has_bits_),
+    0, // no _extensions_
+    3, 24,  // max_field_number, fast_idx_mask
+    offsetof(decltype(_table_), field_lookup_table),
+    4294967288,  // skipmap
+    offsetof(decltype(_table_), field_entries),
+    3,  // num_field_entries
+    0,  // num_aux_entries
+    offsetof(decltype(_table_), field_names),  // no aux_entries
+    Vector_class_data_.base(),
+    nullptr,  // post_loop_handler
+    ::_pbi::TcParser::GenericFallback,  // fallback
+    #ifdef PROTOBUF_PREFETCH_PARSE_TABLE
+    ::_pbi::TcParser::GetTable<::seek::sun_sensor::v1::Vector>(),  // to_prefetch
+    #endif  // PROTOBUF_PREFETCH_PARSE_TABLE
+  }, {{
+    {::_pbi::TcParser::MiniParse, {}},
+    // float x = 1;
+    {::_pbi::TcParser::FastF32S1,
+     {13, 0, 0, PROTOBUF_FIELD_OFFSET(Vector, _impl_.x_)}},
+    // float y = 2;
+    {::_pbi::TcParser::FastF32S1,
+     {21, 1, 0, PROTOBUF_FIELD_OFFSET(Vector, _impl_.y_)}},
+    // float z = 3;
+    {::_pbi::TcParser::FastF32S1,
+     {29, 2, 0, PROTOBUF_FIELD_OFFSET(Vector, _impl_.z_)}},
+  }}, {{
+    65535, 65535
+  }}, {{
+    // float x = 1;
+    {PROTOBUF_FIELD_OFFSET(Vector, _impl_.x_), _Internal::kHasBitsOffset + 0, 0,
+    (0 | ::_fl::kFcOptional | ::_fl::kFloat)},
+    // float y = 2;
+    {PROTOBUF_FIELD_OFFSET(Vector, _impl_.y_), _Internal::kHasBitsOffset + 1, 0,
+    (0 | ::_fl::kFcOptional | ::_fl::kFloat)},
+    // float z = 3;
+    {PROTOBUF_FIELD_OFFSET(Vector, _impl_.z_), _Internal::kHasBitsOffset + 2, 0,
+    (0 | ::_fl::kFcOptional | ::_fl::kFloat)},
+  }},
+  // no aux_entries
+  {{
+  }},
+};
+PROTOBUF_NOINLINE void Vector::Clear() {
+// @@protoc_insertion_point(message_clear_start:seek.sun_sensor.v1.Vector)
+  ::google::protobuf::internal::TSanWrite(&_impl_);
+  ::uint32_t cached_has_bits = 0;
+  // Prevent compiler warnings about cached_has_bits being unused
+  (void) cached_has_bits;
+
+  cached_has_bits = _impl_._has_bits_[0];
+  if ((cached_has_bits & 0x00000007u) != 0) {
+    ::memset(&_impl_.x_, 0, static_cast<::size_t>(
+        reinterpret_cast<char*>(&_impl_.z_) -
+        reinterpret_cast<char*>(&_impl_.x_)) + sizeof(_impl_.z_));
+  }
+  _impl_._has_bits_.Clear();
+  _internal_metadata_.Clear<::google::protobuf::UnknownFieldSet>();
+}
+
+#if defined(PROTOBUF_CUSTOM_VTABLE)
+::uint8_t* PROTOBUF_NONNULL Vector::_InternalSerialize(
+    const ::google::protobuf::MessageLite& base, ::uint8_t* PROTOBUF_NONNULL target,
+    ::google::protobuf::io::EpsCopyOutputStream* PROTOBUF_NONNULL stream) {
+  const Vector& this_ = static_cast<const Vector&>(base);
+#else   // PROTOBUF_CUSTOM_VTABLE
+::uint8_t* PROTOBUF_NONNULL Vector::_InternalSerialize(
+    ::uint8_t* PROTOBUF_NONNULL target,
+    ::google::protobuf::io::EpsCopyOutputStream* PROTOBUF_NONNULL stream) const {
+  const Vector& this_ = *this;
+#endif  // PROTOBUF_CUSTOM_VTABLE
+  // @@protoc_insertion_point(serialize_to_array_start:seek.sun_sensor.v1.Vector)
+  ::uint32_t cached_has_bits = 0;
+  (void)cached_has_bits;
+
+  // float x = 1;
+  if ((this_._impl_._has_bits_[0] & 0x00000001u) != 0) {
+    if (::absl::bit_cast<::uint32_t>(this_._internal_x()) != 0) {
+      target = stream->EnsureSpace(target);
+      target = ::_pbi::WireFormatLite::WriteFloatToArray(
+          1, this_._internal_x(), target);
+    }
+  }
+
+  // float y = 2;
+  if ((this_._impl_._has_bits_[0] & 0x00000002u) != 0) {
+    if (::absl::bit_cast<::uint32_t>(this_._internal_y()) != 0) {
+      target = stream->EnsureSpace(target);
+      target = ::_pbi::WireFormatLite::WriteFloatToArray(
+          2, this_._internal_y(), target);
+    }
+  }
+
+  // float z = 3;
+  if ((this_._impl_._has_bits_[0] & 0x00000004u) != 0) {
+    if (::absl::bit_cast<::uint32_t>(this_._internal_z()) != 0) {
+      target = stream->EnsureSpace(target);
+      target = ::_pbi::WireFormatLite::WriteFloatToArray(
+          3, this_._internal_z(), target);
+    }
+  }
+
+  if (ABSL_PREDICT_FALSE(this_._internal_metadata_.have_unknown_fields())) {
+    target =
+        ::_pbi::WireFormat::InternalSerializeUnknownFieldsToArray(
+            this_._internal_metadata_.unknown_fields<::google::protobuf::UnknownFieldSet>(::google::protobuf::UnknownFieldSet::default_instance), target, stream);
+  }
+  // @@protoc_insertion_point(serialize_to_array_end:seek.sun_sensor.v1.Vector)
+  return target;
+}
+
+#if defined(PROTOBUF_CUSTOM_VTABLE)
+::size_t Vector::ByteSizeLong(const MessageLite& base) {
+  const Vector& this_ = static_cast<const Vector&>(base);
+#else   // PROTOBUF_CUSTOM_VTABLE
+::size_t Vector::ByteSizeLong() const {
+  const Vector& this_ = *this;
+#endif  // PROTOBUF_CUSTOM_VTABLE
+  // @@protoc_insertion_point(message_byte_size_start:seek.sun_sensor.v1.Vector)
+  ::size_t total_size = 0;
+
+  ::uint32_t cached_has_bits = 0;
+  // Prevent compiler warnings about cached_has_bits being unused
+  (void)cached_has_bits;
+
+  ::_pbi::Prefetch5LinesFrom7Lines(&this_);
+  cached_has_bits = this_._impl_._has_bits_[0];
+  if ((cached_has_bits & 0x00000007u) != 0) {
+    // float x = 1;
+    if ((cached_has_bits & 0x00000001u) != 0) {
+      if (::absl::bit_cast<::uint32_t>(this_._internal_x()) != 0) {
+        total_size += 5;
+      }
+    }
+    // float y = 2;
+    if ((cached_has_bits & 0x00000002u) != 0) {
+      if (::absl::bit_cast<::uint32_t>(this_._internal_y()) != 0) {
+        total_size += 5;
+      }
+    }
+    // float z = 3;
+    if ((cached_has_bits & 0x00000004u) != 0) {
+      if (::absl::bit_cast<::uint32_t>(this_._internal_z()) != 0) {
+        total_size += 5;
+      }
+    }
+  }
+  return this_.MaybeComputeUnknownFieldsSize(total_size,
+                                             &this_._impl_._cached_size_);
+}
+
+void Vector::MergeImpl(::google::protobuf::MessageLite& to_msg, const ::google::protobuf::MessageLite& from_msg) {
+  auto* const _this = static_cast<Vector*>(&to_msg);
+  auto& from = static_cast<const Vector&>(from_msg);
+  // @@protoc_insertion_point(class_specific_merge_from_start:seek.sun_sensor.v1.Vector)
+  ABSL_DCHECK_NE(&from, _this);
+  ::uint32_t cached_has_bits = 0;
+  (void) cached_has_bits;
+
+  cached_has_bits = from._impl_._has_bits_[0];
+  if ((cached_has_bits & 0x00000007u) != 0) {
+    if ((cached_has_bits & 0x00000001u) != 0) {
+      if (::absl::bit_cast<::uint32_t>(from._internal_x()) != 0) {
+        _this->_impl_.x_ = from._impl_.x_;
+      }
+    }
+    if ((cached_has_bits & 0x00000002u) != 0) {
+      if (::absl::bit_cast<::uint32_t>(from._internal_y()) != 0) {
+        _this->_impl_.y_ = from._impl_.y_;
+      }
+    }
+    if ((cached_has_bits & 0x00000004u) != 0) {
+      if (::absl::bit_cast<::uint32_t>(from._internal_z()) != 0) {
+        _this->_impl_.z_ = from._impl_.z_;
+      }
+    }
+  }
+  _this->_impl_._has_bits_[0] |= cached_has_bits;
+  _this->_internal_metadata_.MergeFrom<::google::protobuf::UnknownFieldSet>(from._internal_metadata_);
+}
+
+void Vector::CopyFrom(const Vector& from) {
+// @@protoc_insertion_point(class_specific_copy_from_start:seek.sun_sensor.v1.Vector)
+  if (&from == this) return;
+  Clear();
+  MergeFrom(from);
+}
+
+
+void Vector::InternalSwap(Vector* PROTOBUF_RESTRICT PROTOBUF_NONNULL other) {
+  using ::std::swap;
+  _internal_metadata_.InternalSwap(&other->_internal_metadata_);
+  swap(_impl_._has_bits_[0], other->_impl_._has_bits_[0]);
+  ::google::protobuf::internal::memswap<
+      PROTOBUF_FIELD_OFFSET(Vector, _impl_.z_)
+      + sizeof(Vector::_impl_.z_)
+      - PROTOBUF_FIELD_OFFSET(Vector, _impl_.x_)>(
+          reinterpret_cast<char*>(&_impl_.x_),
+          reinterpret_cast<char*>(&other->_impl_.x_));
+}
+
+::google::protobuf::Metadata Vector::GetMetadata() const {
+  return ::google::protobuf::Message::GetMetadataImpl(GetClassData()->full());
+}
 // ===================================================================
 
 class SunSensorData::_Internal {
@@ -148,16 +486,39 @@ SunSensorData::SunSensorData(::google::protobuf::Arena* PROTOBUF_NULLABLE arena)
   SharedCtor(arena);
   // @@protoc_insertion_point(arena_constructor:seek.sun_sensor.v1.SunSensorData)
 }
+PROTOBUF_NDEBUG_INLINE SunSensorData::Impl_::Impl_(
+    ::google::protobuf::internal::InternalVisibility visibility,
+    ::google::protobuf::Arena* PROTOBUF_NULLABLE arena, const Impl_& from,
+    const ::seek::sun_sensor::v1::SunSensorData& from_msg)
+      : _has_bits_{from._has_bits_},
+        _cached_size_{0} {}
+
 SunSensorData::SunSensorData(
-    ::google::protobuf::Arena* PROTOBUF_NULLABLE arena, const SunSensorData& from)
+    ::google::protobuf::Arena* PROTOBUF_NULLABLE arena,
+    const SunSensorData& from)
 #if defined(PROTOBUF_CUSTOM_VTABLE)
-    : ::google::protobuf::Message(arena, SunSensorData_class_data_.base()),
+    : ::google::protobuf::Message(arena, SunSensorData_class_data_.base()) {
 #else   // PROTOBUF_CUSTOM_VTABLE
-    : ::google::protobuf::Message(arena),
+    : ::google::protobuf::Message(arena) {
 #endif  // PROTOBUF_CUSTOM_VTABLE
-      _impl_(from._impl_) {
+  SunSensorData* const _this = this;
+  (void)_this;
   _internal_metadata_.MergeFrom<::google::protobuf::UnknownFieldSet>(
       from._internal_metadata_);
+  new (&_impl_) Impl_(internal_visibility(), arena, from._impl_, from);
+  ::uint32_t cached_has_bits = _impl_._has_bits_[0];
+  _impl_.unit_vector_ = ((cached_has_bits & 0x00000001u) != 0)
+                ? ::google::protobuf::Message::CopyConstruct(arena, *from._impl_.unit_vector_)
+                : nullptr;
+  ::memcpy(reinterpret_cast<char *>(&_impl_) +
+               offsetof(Impl_, std_deviation_),
+           reinterpret_cast<const char *>(&from._impl_) +
+               offsetof(Impl_, std_deviation_),
+           offsetof(Impl_, crc32_) -
+               offsetof(Impl_, std_deviation_) +
+               sizeof(Impl_::crc32_));
+
+  // @@protoc_insertion_point(copy_constructor:seek.sun_sensor.v1.SunSensorData)
 }
 PROTOBUF_NDEBUG_INLINE SunSensorData::Impl_::Impl_(
     ::google::protobuf::internal::InternalVisibility visibility,
@@ -167,10 +528,10 @@ PROTOBUF_NDEBUG_INLINE SunSensorData::Impl_::Impl_(
 inline void SunSensorData::SharedCtor(::_pb::Arena* PROTOBUF_NULLABLE arena) {
   new (&_impl_) Impl_(internal_visibility(), arena);
   ::memset(reinterpret_cast<char *>(&_impl_) +
-               offsetof(Impl_, unit_vector_x_),
+               offsetof(Impl_, unit_vector_),
            0,
            offsetof(Impl_, crc32_) -
-               offsetof(Impl_, unit_vector_x_) +
+               offsetof(Impl_, unit_vector_) +
                sizeof(Impl_::crc32_));
 }
 SunSensorData::~SunSensorData() {
@@ -181,6 +542,7 @@ inline void SunSensorData::SharedDtor(MessageLite& self) {
   SunSensorData& this_ = static_cast<SunSensorData&>(self);
   this_._internal_metadata_.Delete<::google::protobuf::UnknownFieldSet>();
   ABSL_DCHECK(this_.GetArena() == nullptr);
+  delete this_._impl_.unit_vector_;
   this_._impl_.~Impl_();
 }
 
@@ -227,18 +589,18 @@ SunSensorData::GetClassData() const {
   return SunSensorData_class_data_.base();
 }
 PROTOBUF_CONSTINIT PROTOBUF_ATTRIBUTE_INIT_PRIORITY1
-const ::_pbi::TcParseTable<3, 6, 0, 0, 2>
+const ::_pbi::TcParseTable<2, 4, 1, 0, 2>
 SunSensorData::_table_ = {
   {
     PROTOBUF_FIELD_OFFSET(SunSensorData, _impl_._has_bits_),
     0, // no _extensions_
-    6, 56,  // max_field_number, fast_idx_mask
+    4, 24,  // max_field_number, fast_idx_mask
     offsetof(decltype(_table_), field_lookup_table),
-    4294967232,  // skipmap
+    4294967280,  // skipmap
     offsetof(decltype(_table_), field_entries),
-    6,  // num_field_entries
-    0,  // num_aux_entries
-    offsetof(decltype(_table_), field_names),  // no aux_entries
+    4,  // num_field_entries
+    1,  // num_aux_entries
+    offsetof(decltype(_table_), aux_entries),
     SunSensorData_class_data_.base(),
     nullptr,  // post_loop_handler
     ::_pbi::TcParser::GenericFallback,  // fallback
@@ -246,49 +608,37 @@ SunSensorData::_table_ = {
     ::_pbi::TcParser::GetTable<::seek::sun_sensor::v1::SunSensorData>(),  // to_prefetch
     #endif  // PROTOBUF_PREFETCH_PARSE_TABLE
   }, {{
-    {::_pbi::TcParser::MiniParse, {}},
-    // float unit_vector_x = 1;
+    // uint32 crc32 = 4;
+    {::_pbi::TcParser::SingularVarintNoZag1<::uint32_t, offsetof(SunSensorData, _impl_.crc32_), 3>(),
+     {32, 3, 0, PROTOBUF_FIELD_OFFSET(SunSensorData, _impl_.crc32_)}},
+    // .seek.sun_sensor.v1.Vector unit_vector = 1;
+    {::_pbi::TcParser::FastMtS1,
+     {10, 0, 0, PROTOBUF_FIELD_OFFSET(SunSensorData, _impl_.unit_vector_)}},
+    // float std_deviation = 2;
     {::_pbi::TcParser::FastF32S1,
-     {13, 0, 0, PROTOBUF_FIELD_OFFSET(SunSensorData, _impl_.unit_vector_x_)}},
-    // float unit_vector_y = 2;
-    {::_pbi::TcParser::FastF32S1,
-     {21, 1, 0, PROTOBUF_FIELD_OFFSET(SunSensorData, _impl_.unit_vector_y_)}},
-    // float unit_vector_z = 3;
-    {::_pbi::TcParser::FastF32S1,
-     {29, 2, 0, PROTOBUF_FIELD_OFFSET(SunSensorData, _impl_.unit_vector_z_)}},
-    // float std_deviation = 4;
-    {::_pbi::TcParser::FastF32S1,
-     {37, 3, 0, PROTOBUF_FIELD_OFFSET(SunSensorData, _impl_.std_deviation_)}},
-    // .seek.sun_sensor.v1.ErrorCode error_code = 5;
-    {::_pbi::TcParser::SingularVarintNoZag1<::uint32_t, offsetof(SunSensorData, _impl_.error_code_), 4>(),
-     {40, 4, 0, PROTOBUF_FIELD_OFFSET(SunSensorData, _impl_.error_code_)}},
-    // uint32 crc32 = 6;
-    {::_pbi::TcParser::SingularVarintNoZag1<::uint32_t, offsetof(SunSensorData, _impl_.crc32_), 5>(),
-     {48, 5, 0, PROTOBUF_FIELD_OFFSET(SunSensorData, _impl_.crc32_)}},
-    {::_pbi::TcParser::MiniParse, {}},
+     {21, 1, 0, PROTOBUF_FIELD_OFFSET(SunSensorData, _impl_.std_deviation_)}},
+    // .seek.sun_sensor.v1.ErrorCode error_code = 3;
+    {::_pbi::TcParser::SingularVarintNoZag1<::uint32_t, offsetof(SunSensorData, _impl_.error_code_), 2>(),
+     {24, 2, 0, PROTOBUF_FIELD_OFFSET(SunSensorData, _impl_.error_code_)}},
   }}, {{
     65535, 65535
   }}, {{
-    // float unit_vector_x = 1;
-    {PROTOBUF_FIELD_OFFSET(SunSensorData, _impl_.unit_vector_x_), _Internal::kHasBitsOffset + 0, 0,
+    // .seek.sun_sensor.v1.Vector unit_vector = 1;
+    {PROTOBUF_FIELD_OFFSET(SunSensorData, _impl_.unit_vector_), _Internal::kHasBitsOffset + 0, 0,
+    (0 | ::_fl::kFcOptional | ::_fl::kMessage | ::_fl::kTvTable)},
+    // float std_deviation = 2;
+    {PROTOBUF_FIELD_OFFSET(SunSensorData, _impl_.std_deviation_), _Internal::kHasBitsOffset + 1, 0,
     (0 | ::_fl::kFcOptional | ::_fl::kFloat)},
-    // float unit_vector_y = 2;
-    {PROTOBUF_FIELD_OFFSET(SunSensorData, _impl_.unit_vector_y_), _Internal::kHasBitsOffset + 1, 0,
-    (0 | ::_fl::kFcOptional | ::_fl::kFloat)},
-    // float unit_vector_z = 3;
-    {PROTOBUF_FIELD_OFFSET(SunSensorData, _impl_.unit_vector_z_), _Internal::kHasBitsOffset + 2, 0,
-    (0 | ::_fl::kFcOptional | ::_fl::kFloat)},
-    // float std_deviation = 4;
-    {PROTOBUF_FIELD_OFFSET(SunSensorData, _impl_.std_deviation_), _Internal::kHasBitsOffset + 3, 0,
-    (0 | ::_fl::kFcOptional | ::_fl::kFloat)},
-    // .seek.sun_sensor.v1.ErrorCode error_code = 5;
-    {PROTOBUF_FIELD_OFFSET(SunSensorData, _impl_.error_code_), _Internal::kHasBitsOffset + 4, 0,
+    // .seek.sun_sensor.v1.ErrorCode error_code = 3;
+    {PROTOBUF_FIELD_OFFSET(SunSensorData, _impl_.error_code_), _Internal::kHasBitsOffset + 2, 0,
     (0 | ::_fl::kFcOptional | ::_fl::kOpenEnum)},
-    // uint32 crc32 = 6;
-    {PROTOBUF_FIELD_OFFSET(SunSensorData, _impl_.crc32_), _Internal::kHasBitsOffset + 5, 0,
+    // uint32 crc32 = 4;
+    {PROTOBUF_FIELD_OFFSET(SunSensorData, _impl_.crc32_), _Internal::kHasBitsOffset + 3, 0,
     (0 | ::_fl::kFcOptional | ::_fl::kUInt32)},
   }},
-  // no aux_entries
+  {{
+      {::_pbi::TcParser::GetTable<::seek::sun_sensor::v1::Vector>()},
+  }},
   {{
   }},
 };
@@ -300,10 +650,14 @@ PROTOBUF_NOINLINE void SunSensorData::Clear() {
   (void) cached_has_bits;
 
   cached_has_bits = _impl_._has_bits_[0];
-  if ((cached_has_bits & 0x0000003fu) != 0) {
-    ::memset(&_impl_.unit_vector_x_, 0, static_cast<::size_t>(
+  if ((cached_has_bits & 0x00000001u) != 0) {
+    ABSL_DCHECK(_impl_.unit_vector_ != nullptr);
+    _impl_.unit_vector_->Clear();
+  }
+  if ((cached_has_bits & 0x0000000eu) != 0) {
+    ::memset(&_impl_.std_deviation_, 0, static_cast<::size_t>(
         reinterpret_cast<char*>(&_impl_.crc32_) -
-        reinterpret_cast<char*>(&_impl_.unit_vector_x_)) + sizeof(_impl_.crc32_));
+        reinterpret_cast<char*>(&_impl_.std_deviation_)) + sizeof(_impl_.crc32_));
   }
   _impl_._has_bits_.Clear();
   _internal_metadata_.Clear<::google::protobuf::UnknownFieldSet>();
@@ -324,57 +678,38 @@ PROTOBUF_NOINLINE void SunSensorData::Clear() {
   ::uint32_t cached_has_bits = 0;
   (void)cached_has_bits;
 
-  // float unit_vector_x = 1;
-  if ((this_._impl_._has_bits_[0] & 0x00000001u) != 0) {
-    if (::absl::bit_cast<::uint32_t>(this_._internal_unit_vector_x()) != 0) {
-      target = stream->EnsureSpace(target);
-      target = ::_pbi::WireFormatLite::WriteFloatToArray(
-          1, this_._internal_unit_vector_x(), target);
-    }
+  cached_has_bits = this_._impl_._has_bits_[0];
+  // .seek.sun_sensor.v1.Vector unit_vector = 1;
+  if ((cached_has_bits & 0x00000001u) != 0) {
+    target = ::google::protobuf::internal::WireFormatLite::InternalWriteMessage(
+        1, *this_._impl_.unit_vector_, this_._impl_.unit_vector_->GetCachedSize(), target,
+        stream);
   }
 
-  // float unit_vector_y = 2;
-  if ((this_._impl_._has_bits_[0] & 0x00000002u) != 0) {
-    if (::absl::bit_cast<::uint32_t>(this_._internal_unit_vector_y()) != 0) {
-      target = stream->EnsureSpace(target);
-      target = ::_pbi::WireFormatLite::WriteFloatToArray(
-          2, this_._internal_unit_vector_y(), target);
-    }
-  }
-
-  // float unit_vector_z = 3;
-  if ((this_._impl_._has_bits_[0] & 0x00000004u) != 0) {
-    if (::absl::bit_cast<::uint32_t>(this_._internal_unit_vector_z()) != 0) {
-      target = stream->EnsureSpace(target);
-      target = ::_pbi::WireFormatLite::WriteFloatToArray(
-          3, this_._internal_unit_vector_z(), target);
-    }
-  }
-
-  // float std_deviation = 4;
-  if ((this_._impl_._has_bits_[0] & 0x00000008u) != 0) {
+  // float std_deviation = 2;
+  if ((cached_has_bits & 0x00000002u) != 0) {
     if (::absl::bit_cast<::uint32_t>(this_._internal_std_deviation()) != 0) {
       target = stream->EnsureSpace(target);
       target = ::_pbi::WireFormatLite::WriteFloatToArray(
-          4, this_._internal_std_deviation(), target);
+          2, this_._internal_std_deviation(), target);
     }
   }
 
-  // .seek.sun_sensor.v1.ErrorCode error_code = 5;
-  if ((this_._impl_._has_bits_[0] & 0x00000010u) != 0) {
+  // .seek.sun_sensor.v1.ErrorCode error_code = 3;
+  if ((cached_has_bits & 0x00000004u) != 0) {
     if (this_._internal_error_code() != 0) {
       target = stream->EnsureSpace(target);
       target = ::_pbi::WireFormatLite::WriteEnumToArray(
-          5, this_._internal_error_code(), target);
+          3, this_._internal_error_code(), target);
     }
   }
 
-  // uint32 crc32 = 6;
-  if ((this_._impl_._has_bits_[0] & 0x00000020u) != 0) {
+  // uint32 crc32 = 4;
+  if ((cached_has_bits & 0x00000008u) != 0) {
     if (this_._internal_crc32() != 0) {
       target = stream->EnsureSpace(target);
       target = ::_pbi::WireFormatLite::WriteUInt32ToArray(
-          6, this_._internal_crc32(), target);
+          4, this_._internal_crc32(), target);
     }
   }
 
@@ -403,40 +738,27 @@ PROTOBUF_NOINLINE void SunSensorData::Clear() {
 
   ::_pbi::Prefetch5LinesFrom7Lines(&this_);
   cached_has_bits = this_._impl_._has_bits_[0];
-  if ((cached_has_bits & 0x0000003fu) != 0) {
-    // float unit_vector_x = 1;
+  if ((cached_has_bits & 0x0000000fu) != 0) {
+    // .seek.sun_sensor.v1.Vector unit_vector = 1;
     if ((cached_has_bits & 0x00000001u) != 0) {
-      if (::absl::bit_cast<::uint32_t>(this_._internal_unit_vector_x()) != 0) {
-        total_size += 5;
-      }
+      total_size += 1 +
+                    ::google::protobuf::internal::WireFormatLite::MessageSize(*this_._impl_.unit_vector_);
     }
-    // float unit_vector_y = 2;
+    // float std_deviation = 2;
     if ((cached_has_bits & 0x00000002u) != 0) {
-      if (::absl::bit_cast<::uint32_t>(this_._internal_unit_vector_y()) != 0) {
-        total_size += 5;
-      }
-    }
-    // float unit_vector_z = 3;
-    if ((cached_has_bits & 0x00000004u) != 0) {
-      if (::absl::bit_cast<::uint32_t>(this_._internal_unit_vector_z()) != 0) {
-        total_size += 5;
-      }
-    }
-    // float std_deviation = 4;
-    if ((cached_has_bits & 0x00000008u) != 0) {
       if (::absl::bit_cast<::uint32_t>(this_._internal_std_deviation()) != 0) {
         total_size += 5;
       }
     }
-    // .seek.sun_sensor.v1.ErrorCode error_code = 5;
-    if ((cached_has_bits & 0x00000010u) != 0) {
+    // .seek.sun_sensor.v1.ErrorCode error_code = 3;
+    if ((cached_has_bits & 0x00000004u) != 0) {
       if (this_._internal_error_code() != 0) {
         total_size += 1 +
                       ::_pbi::WireFormatLite::EnumSize(this_._internal_error_code());
       }
     }
-    // uint32 crc32 = 6;
-    if ((cached_has_bits & 0x00000020u) != 0) {
+    // uint32 crc32 = 4;
+    if ((cached_has_bits & 0x00000008u) != 0) {
       if (this_._internal_crc32() != 0) {
         total_size += ::_pbi::WireFormatLite::UInt32SizePlusOne(
             this_._internal_crc32());
@@ -450,39 +772,33 @@ PROTOBUF_NOINLINE void SunSensorData::Clear() {
 void SunSensorData::MergeImpl(::google::protobuf::MessageLite& to_msg, const ::google::protobuf::MessageLite& from_msg) {
   auto* const _this = static_cast<SunSensorData*>(&to_msg);
   auto& from = static_cast<const SunSensorData&>(from_msg);
+  ::google::protobuf::Arena* arena = _this->GetArena();
   // @@protoc_insertion_point(class_specific_merge_from_start:seek.sun_sensor.v1.SunSensorData)
   ABSL_DCHECK_NE(&from, _this);
   ::uint32_t cached_has_bits = 0;
   (void) cached_has_bits;
 
   cached_has_bits = from._impl_._has_bits_[0];
-  if ((cached_has_bits & 0x0000003fu) != 0) {
+  if ((cached_has_bits & 0x0000000fu) != 0) {
     if ((cached_has_bits & 0x00000001u) != 0) {
-      if (::absl::bit_cast<::uint32_t>(from._internal_unit_vector_x()) != 0) {
-        _this->_impl_.unit_vector_x_ = from._impl_.unit_vector_x_;
+      ABSL_DCHECK(from._impl_.unit_vector_ != nullptr);
+      if (_this->_impl_.unit_vector_ == nullptr) {
+        _this->_impl_.unit_vector_ = ::google::protobuf::Message::CopyConstruct(arena, *from._impl_.unit_vector_);
+      } else {
+        _this->_impl_.unit_vector_->MergeFrom(*from._impl_.unit_vector_);
       }
     }
     if ((cached_has_bits & 0x00000002u) != 0) {
-      if (::absl::bit_cast<::uint32_t>(from._internal_unit_vector_y()) != 0) {
-        _this->_impl_.unit_vector_y_ = from._impl_.unit_vector_y_;
-      }
-    }
-    if ((cached_has_bits & 0x00000004u) != 0) {
-      if (::absl::bit_cast<::uint32_t>(from._internal_unit_vector_z()) != 0) {
-        _this->_impl_.unit_vector_z_ = from._impl_.unit_vector_z_;
-      }
-    }
-    if ((cached_has_bits & 0x00000008u) != 0) {
       if (::absl::bit_cast<::uint32_t>(from._internal_std_deviation()) != 0) {
         _this->_impl_.std_deviation_ = from._impl_.std_deviation_;
       }
     }
-    if ((cached_has_bits & 0x00000010u) != 0) {
+    if ((cached_has_bits & 0x00000004u) != 0) {
       if (from._internal_error_code() != 0) {
         _this->_impl_.error_code_ = from._impl_.error_code_;
       }
     }
-    if ((cached_has_bits & 0x00000020u) != 0) {
+    if ((cached_has_bits & 0x00000008u) != 0) {
       if (from._internal_crc32() != 0) {
         _this->_impl_.crc32_ = from._impl_.crc32_;
       }
@@ -507,9 +823,9 @@ void SunSensorData::InternalSwap(SunSensorData* PROTOBUF_RESTRICT PROTOBUF_NONNU
   ::google::protobuf::internal::memswap<
       PROTOBUF_FIELD_OFFSET(SunSensorData, _impl_.crc32_)
       + sizeof(SunSensorData::_impl_.crc32_)
-      - PROTOBUF_FIELD_OFFSET(SunSensorData, _impl_.unit_vector_x_)>(
-          reinterpret_cast<char*>(&_impl_.unit_vector_x_),
-          reinterpret_cast<char*>(&other->_impl_.unit_vector_x_));
+      - PROTOBUF_FIELD_OFFSET(SunSensorData, _impl_.unit_vector_)>(
+          reinterpret_cast<char*>(&_impl_.unit_vector_),
+          reinterpret_cast<char*>(&other->_impl_.unit_vector_));
 }
 
 ::google::protobuf::Metadata SunSensorData::GetMetadata() const {
