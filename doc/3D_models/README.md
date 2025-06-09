@@ -6,6 +6,23 @@ This directory serves as the central repository for managing and organizing 3D m
 
 This section provides a chronological record of development.
 
+### Release 2025-06-09 SunSensor v2.0
+
+#### Parts:
+- Slit sensor face v8
+- Frame stick v4
+
+#### Notes:
+The sensor face changes:
+
+Remove 2 parts: `Mount Separator Top` and `Mount Separator Bottom`, making it possible to mount the electrical board directly. Increase size of the separator due to the increased distance between photoresistors directly on the eletrical board. Use 4 instead of 2 bolt holes to mount the electrical board to the wall to increase stability. Adjust spacing of the bolt holes to the raster of the standard electrical board. Add grating hole on the wall between its edges and the center point.
+
+The frame changes:
+
+Remove mounting points for internal platforms. For both parts, fill the empty space in the corner to increase their strength. For the `Stick Lid` part, reduce the distance separating the nut from the mounting bolt to allow the use of a 16mm long bolt. Add a diagonal stabilizer to connect two opposite walls for the nuts and connect them to the filling of the parts in the corner. This is to increase durability with narrower walls for the nuts.
+
+Remove internal platforms to mount the electrical boards directly on the walls with separators. For all parts, change the screw size to M1.6.
+
 ### Release 2025-02-18
 
 #### Parts:
@@ -87,7 +104,6 @@ The sticks for mounting the electronic board were too long, thin and crackly, in
 
 #### Notes:
 The face changes:
-
 - Decreased size up to 90x90 mm.
 - Removed perpendicular hooks on the edges to simplify assembly.
 - Reduced number of connecting holes.
