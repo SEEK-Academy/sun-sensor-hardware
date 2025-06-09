@@ -19,7 +19,7 @@ Remove 2 parts: `Mount Separator Top` and `Mount Separator Bottom`, making it po
 
 The frame changes:
 
-Remove mounting points for internal platforms. For both parts, fill the empty space in the corner to increase their strength. For the `Stick Lid` part, reduce the distance separating the nut from the mounting bolt to allow the use of a 16mm long bolt. Add a diagonal stabilizer to connect two opposite walls for the nuts and connect them to the filling of the parts in the corner. This is to increase durability with narrower walls for the nuts.
+Remove mounting points for internal platforms. For both parts, fill the empty space in the corner to increase their strength. For the `Stick Lid` part, reduce the distance separating the nut from the mounting bolt to allow the use of a 16mm long bolt. Add a diagonal stabilizer to connect two opposite walls for the nuts and connect them to the filling of the parts in the corner. This is to increase durability with narrower walls for the nuts. The size of the nut slot at the wall of the `Stick Lid` part is too small due to the accuracy of printing small parts.
 
 Remove internal platforms to mount the electrical boards directly on the walls with separators. For all parts, change the screw size to M1.6.
 
