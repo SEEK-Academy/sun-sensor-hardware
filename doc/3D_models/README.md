@@ -6,6 +6,17 @@ This directory serves as the central repository for managing and organizing 3D m
 
 This section provides a chronological record of development.
 
+### Release 2025-06-17 SunSensor v2.1
+
+#### Parts:
+- Slit sensor face v8
+- Frame cup v1
+
+#### Notes:
+The frame cup creation:
+
+Combine the parts: `Frame Stick` and `Frame Stick Lid` into one part. Combining the parts forms a square shape without one side. This allows you to slide the `Slit Sensor Face` inside. This is to reduce the number of parts and make the whole device easier to assemble.
+
 ### Release 2025-06-09 SunSensor v2.0
 
 #### Parts:
