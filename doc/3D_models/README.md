@@ -6,6 +6,17 @@ This directory serves as the central repository for managing and organizing 3D m
 
 This section provides a chronological record of development.
 
+### Release 2025-06-21 SunSensor v2.2
+
+#### Parts:
+- Slit sensor face v9
+- Frame cup v1
+
+#### Notes:
+The sensor face changes:
+
+Adjust the spacing of the mounting points to the electrical. Reduce border size of a face. Add new PCB tester.
+
 ### Release 2025-06-17 SunSensor v2.1
 
 #### Parts:
