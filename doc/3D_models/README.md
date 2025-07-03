@@ -6,6 +6,21 @@ This directory serves as the central repository for managing and organizing 3D m
 
 This section provides a chronological record of development.
 
+### Release 2025-07-03 SunSensor v2.3
+
+#### Parts:
+- Slit sensor face v10
+- Frame cup v2
+
+#### Notes:
+The sensor face changes:
+
+Reduce total size to 88 mm and border size of a face to 4 mm. Remove front mount holes. Increase face grid density.
+
+The frame changes:
+
+Reduce the thickness of the walls. Reduce the length of the wall overlapping inward on the `Slit Sensor Face`. Increases the height of the separating block `Slit Sensor Face` from the `Frame Cup` border.  Change the inner grippers on the `Slit Sensor Face` to a triangular shape. Adjust the positions of the mounting holes.
+
 ### Release 2025-06-21 SunSensor v2.2
 
 #### Parts:
