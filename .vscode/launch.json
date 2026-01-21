@@ -17,7 +17,7 @@
                 "samplesPerSecond": 4
             },
             "showDevDebugOutput": "raw",
-            "svdFile": "./STM32F411.svd"
+            "svdFile": "./STM32F411.svd",
         }
     ]
 }

@@ -339,6 +339,15 @@ USBD_StatusTypeDef USBD_LL_Init(USBD_HandleTypeDef *pdev)
     Error_Handler( );
   }
 
+  /* When VBUS sensing is disabled, we need to:
+   * 1. Disable VBUS sensing
+   * 2. Enable the internal transceiver (clear PWRDWN)
+   * This allows USB to work without a VBUS detection circuit */
+  USB_OTG_FS->GCCFG |= USB_OTG_GCCFG_NOVBUSSENS;
+  USB_OTG_FS->GCCFG &= ~USB_OTG_GCCFG_VBUSBSEN;
+  USB_OTG_FS->GCCFG &= ~USB_OTG_GCCFG_VBUSASEN;
+  USB_OTG_FS->GCCFG |= USB_OTG_GCCFG_PWRDWN;
+
 #if (USE_HAL_PCD_REGISTER_CALLBACKS == 1U)
   /* Register USB PCD CallBacks */
   HAL_PCD_RegisterCallback(&hpcd_USB_OTG_FS, HAL_PCD_SOF_CB_ID, PCD_SOFCallback);

@@ -1,51 +1,74 @@
-#include "stm32f401xc.h"
+#include "stm32f4xx_hal.h"
 #include "peripherials/i2c.h"
 
 namespace peripherals
 {
+    I2C_HandleTypeDef hi2c1;
+
+    I_I2C::I2C_Error_t I2C_1::readRegister(uint8_t reg, uint8_t& data)
+    {
+        HAL_StatusTypeDef status =
+            HAL_I2C_Mem_Read(&hi2c1, address << 1, reg, I2C_MEMADD_SIZE_8BIT, &data, 1, 100);
+        return (status == HAL_OK) ? I_I2C::I2C_Error_t::OK : I_I2C::I2C_Error_t::ERROR;
+    }
 
     void I2C_1::init()
     {
-        RCC->APB1ENR |= RCC_APB1ENR_I2C1EN;   // Enable I2C1 clock
-        RCC->AHB1ENR |= RCC_AHB1ENR_GPIOBEN;  // Enable GPIOB clock
+        GPIO_InitTypeDef GPIO_InitStruct = {0};
 
-        // Configure PB6 (SCL) and PB7 (SDA) as alternate function open-drain
-        GPIOB->MODER &= ~(GPIO_MODER_MODE6 | GPIO_MODER_MODE7);     // Clear mode
-        GPIOB->MODER |= (GPIO_MODER_MODE6_1 | GPIO_MODER_MODE7_1);  // Alternate function
-        GPIOB->OTYPER |= (GPIO_OTYPER_OT6 | GPIO_OTYPER_OT7);       // Open-drain
-        GPIOB->AFR[0] |= (4 << GPIO_AFRL_AFSEL6_Pos) | (4 << GPIO_AFRL_AFSEL7_Pos);  // AF4 (I2C1)
+        // Enable peripherals clocks
+        __HAL_RCC_GPIOB_CLK_ENABLE();
+        __HAL_RCC_I2C1_CLK_ENABLE();
 
-        // Configure I2C1
-        I2C1->CR1   = 0;          // Reset control register 1
-        I2C1->CR2   = 50;         // Set peripheral clock frequency to 16 MHz
-        I2C1->CCR   = 80;         // Set clock control register for 100 kHz (Standard Mode)
-        I2C1->TRISE = 17;         // Maximum rise time
-        I2C1->CR1 |= I2C_CR1_PE;  // Enable I2C1
-        isInitialized = true;
-    }
+        // Configure GPIO pins
+        GPIO_InitStruct.Pin       = GPIO_PIN_8 | GPIO_PIN_9;
+        GPIO_InitStruct.Mode      = GPIO_MODE_AF_OD;
+        GPIO_InitStruct.Pull      = GPIO_PULLUP;
+        GPIO_InitStruct.Speed     = GPIO_SPEED_FREQ_VERY_HIGH;
+        GPIO_InitStruct.Alternate = GPIO_AF4_I2C1;
+        HAL_GPIO_Init(GPIOB, &GPIO_InitStruct);
 
-    void I2C_1::start(uint8_t address, uint8_t direction)
-    {
-        // Generate a START condition
-        I2C1->CR1 |= I2C_CR1_START;
-        while (!(I2C1->SR1 & I2C_SR1_SB))
-            ;  // Wait for START condition generated
+        // Configure I2C
+        hi2c1.Instance             = I2C1;
+        hi2c1.Init.ClockSpeed      = 100000;  // 100 KHz
+        hi2c1.Init.DutyCycle       = I2C_DUTYCYCLE_2;
+        hi2c1.Init.OwnAddress1     = 0;
+        hi2c1.Init.AddressingMode  = I2C_ADDRESSINGMODE_7BIT;
+        hi2c1.Init.DualAddressMode = I2C_DUALADDRESS_DISABLE;
+        hi2c1.Init.OwnAddress2     = 0;
+        hi2c1.Init.GeneralCallMode = I2C_GENERALCALL_DISABLE;
+        hi2c1.Init.NoStretchMode   = I2C_NOSTRETCH_DISABLE;
 
-        // Send slave address with R/W bit
-        I2C1->DR = address | direction;
-        while (!(I2C1->SR1 & I2C_SR1_ADDR))
-            ;             // Wait for address sent
-        (void)I2C1->SR2;  // Clear ADDR flag by reading SR2
-    }
-
-    void I2C_1::stop()
-    {
-        // Generate a STOP condition
-        I2C1->CR1 |= I2C_CR1_STOP;
+        if (HAL_I2C_Init(&hi2c1) == HAL_OK)
+        {
+            isInitialized = true;
+        }
     }
 
     I_I2C::I2C_Error_t I2C_1::sendData(std::vector<uint8_t> data)
     {
+        if (!data.empty())
+        {
+            HAL_StatusTypeDef status =
+                HAL_I2C_Master_Transmit(&hi2c1, address << 1, data.data(), data.size(), 100);
+            return (status == HAL_OK) ? I_I2C::I2C_Error_t::OK : I_I2C::I2C_Error_t::ERROR;
+        }
+        return I_I2C::I2C_Error_t::ERROR;
     }
 
+    I_I2C::I2C_Error_t I2C_1::readData(std::vector<uint8_t>& data)
+    {
+        if (!data.empty())
+        {
+            HAL_StatusTypeDef status =
+                HAL_I2C_Master_Receive(&hi2c1, address << 1, data.data(), data.size(), 100);
+            return (status == HAL_OK) ? I_I2C::I2C_Error_t::OK : I_I2C::I2C_Error_t::ERROR;
+        }
+        return I_I2C::I2C_Error_t::ERROR;
+    }
+
+    void I2C_1::setAddress(uint8_t newAddress)
+    {
+        address = newAddress;
+    }
 }  // namespace peripherals

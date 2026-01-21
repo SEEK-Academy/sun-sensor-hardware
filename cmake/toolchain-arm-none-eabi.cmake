@@ -13,7 +13,7 @@ if(NOT DEFINED TOOLCHAIN_PREFIX)
     if(CMAKE_HOST_SYSTEM_NAME STREQUAL Linux)
         set(TOOLCHAIN_PREFIX "/usr")
     elseif(CMAKE_HOST_SYSTEM_NAME STREQUAL Darwin)
-        set(TOOLCHAIN_PREFIX "/usr/local")
+        set(TOOLCHAIN_PREFIX "/opt/homebrew/opt/arm-none-eabi-gcc")
     elseif(CMAKE_HOST_SYSTEM_NAME STREQUAL Windows)
         message(STATUS "Please specify the TOOLCHAIN_PREFIX !\n For example: -DTOOLCHAIN_PREFIX=\"C:/Program Files/GNU Tools ARM Embedded\" ")
     else()
@@ -22,8 +22,8 @@ if(NOT DEFINED TOOLCHAIN_PREFIX)
     endif()
 endif()
 set(TOOLCHAIN_BIN_DIR ${TOOLCHAIN_PREFIX}/bin)
-set(TOOLCHAIN_INC_DIR ${TOOLCHAIN_PREFIX}/${TOOLCHAIN}/include)
-set(TOOLCHAIN_LIB_DIR ${TOOLCHAIN_PREFIX}/${TOOLCHAIN}/lib)
+set(TOOLCHAIN_INC_DIR ${TOOLCHAIN_PREFIX}/include)
+set(TOOLCHAIN_LIB_DIR ${TOOLCHAIN_PREFIX}/lib)
 
 # Set system depended extensions
 if(WIN32)
@@ -46,7 +46,7 @@ set(CMAKE_TRY_COMPILE_TARGET_TYPE STATIC_LIBRARY)
 # -Wall                 Print only standard warnings, for all use Wextra
 # -ffunction-sections   Place each function item into its own section in the output file.
 # -fdata-sections       Place each data item into its own section in the output file.
-# -fomit-frame-pointer  Omit the frame pointer in functions that don’t need one.
+# -fomit-frame-pointer  Omit the frame pointer in functions that don't need one.
 # -mabi=aapcs           Defines enums to be a variable sized type.
 set(OBJECT_GEN_FLAGS "-O0 -mthumb -fno-builtin -Wall -ffunction-sections -fdata-sections -fomit-frame-pointer -mabi=aapcs")
 
@@ -66,7 +66,7 @@ set(CMAKE_EXE_LINKER_FLAGS "-Wl,--gc-sections --specs=nano.specs --specs=nosys.s
 
 # Options for DEBUG build
 # -Og   Enables optimizations that do not interfere with debugging.
-# -g    Produce debugging information in the operating system’s native format.
+# -g    Produce debugging information in the operating system's native format.
 set(CMAKE_C_FLAGS_DEBUG "-Og -g" CACHE INTERNAL "C Compiler options for debug build type")
 set(CMAKE_CXX_FLAGS_DEBUG "-Og -g" CACHE INTERNAL "C++ Compiler options for debug build type")
 set(CMAKE_ASM_FLAGS_DEBUG "-g" CACHE INTERNAL "ASM Compiler options for debug build type")

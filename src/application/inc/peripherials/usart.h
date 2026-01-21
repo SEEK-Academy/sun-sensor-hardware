@@ -1,11 +1,10 @@
 #pragma once
 #include <vector>
 #include <cstdint>
+#include "peripherials/peripherals_common.h"
 
 namespace peripherals
 {
-    constexpr uint32_t sysClock = 100'000'000;
-
     class I_USART
     {
       public:
