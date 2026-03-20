@@ -6,6 +6,25 @@ This directory serves as the central repository for managing and organizing 3D m
 
 This section provides a chronological record of development.
 
+### Release 2026-03-20 SunSensor v2.4
+
+https://cad.onshape.com/documents/923794ab1c178e336c5fca70/w/8d71d4fffd2803819113e6ab/e/7e0e056ad3225102c7428f8c
+
+#### Parts:
+- Slit sensor face v11
+- Frame cup v3
+- Holder v1
+
+#### Notes:
+The holder added:
+Added a holder for device presentation purposes. The holder includes only mounting holes for attaching it to the base, without CubeSat mounting.
+
+The frame cup changes:
+Removed the shorter wall supports from the Frame Cup part, as they tended to break.
+
+The slit sensor face changes:
+Thickened the lattice structure in the Slit Sensor Face part.
+
 ### Release 2025-07-03 SunSensor v2.3
 
 #### Parts:
@@ -14,11 +33,9 @@ This section provides a chronological record of development.
 
 #### Notes:
 The sensor face changes:
-
 Reduce total size to 88 mm and border size of a face to 4 mm. Remove front mount holes. Increase face grid density.
 
 The frame changes:
-
 Reduce the thickness of the walls. Reduce the length of the wall overlapping inward on the `Slit Sensor Face`. Increases the height of the separating block `Slit Sensor Face` from the `Frame Cup` border.  Change the inner grippers on the `Slit Sensor Face` to a triangular shape. Adjust the positions of the mounting holes.
 
 ### Release 2025-06-21 SunSensor v2.2
@@ -29,7 +46,6 @@ Reduce the thickness of the walls. Reduce the length of the wall overlapping inw
 
 #### Notes:
 The sensor face changes:
-
 Adjust the spacing of the mounting points to the electrical. Reduce border size of a face. Add new PCB tester.
 
 ### Release 2025-06-17 SunSensor v2.1
@@ -40,7 +56,6 @@ Adjust the spacing of the mounting points to the electrical. Reduce border size 
 
 #### Notes:
 The frame cup creation:
-
 Combine the parts: `Frame Stick` and `Frame Stick Lid` into one part. Combining the parts forms a square shape without one side. This allows you to slide the `Slit Sensor Face` inside. This is to reduce the number of parts and make the whole device easier to assemble.
 
 ### Release 2025-06-09 SunSensor v2.0
@@ -51,11 +66,9 @@ Combine the parts: `Frame Stick` and `Frame Stick Lid` into one part. Combining 
 
 #### Notes:
 The sensor face changes:
-
 Remove 2 parts: `Mount Separator Top` and `Mount Separator Bottom`, making it possible to mount the electrical board directly. Increase size of the separator due to the increased distance between photoresistors directly on the eletrical board. Use 4 instead of 2 bolt holes to mount the electrical board to the wall to increase stability. Adjust spacing of the bolt holes to the raster of the standard electrical board. Add grating hole on the wall between its edges and the center point.
 
 The frame changes:
-
 Remove mounting points for internal platforms. For both parts, fill the empty space in the corner to increase their strength. For the `Stick Lid` part, reduce the distance separating the nut from the mounting bolt to allow the use of a 16mm long bolt. Add a diagonal stabilizer to connect two opposite walls for the nuts and connect them to the filling of the parts in the corner. This is to increase durability with narrower walls for the nuts. The size of the nut slot at the wall of the `Stick Lid` part is too small due to the accuracy of printing small parts.
 
 Remove internal platforms to mount the electrical boards directly on the walls with separators. For all parts, change the screw size to M1.6.
@@ -69,7 +82,6 @@ Remove internal platforms to mount the electrical boards directly on the walls w
 
 #### Notes:
 The platform changes:
-
 Reduced size of internal void, the electrical board fits perfectly inside. 
 Changed support grid pattern on the bottom of the internal void to match the solder pattern on the bottom of the electrical board.
 
@@ -82,7 +94,6 @@ Changed support grid pattern on the bottom of the internal void to match the sol
 
 #### Notes:
 The platform changes:
-
 Small size changes to better fit with an electrical board inside interial void.
 After printing there is still a little width spacing for an electrical board.
 Added a grid pattern on the bottom of the void to better hold an electronic board.
@@ -98,7 +109,6 @@ The grid pattern does not mesh with the solder at the bottom of an electronic bo
 
 #### Notes:
 The platform changes:
-
 New internal platform is in smother shape on the borders.
 The center of the platform is removed due to the central installation of an electronic board.
 But the center void is too wide to hold an electronic board in place.
@@ -114,7 +124,6 @@ The stabilizers have pointed edges to cover a minimum area on the board, and the
 
 #### Notes:
 The frame changes:
-
 A lot of material has been removed from the interior of the CubeSat. 
 Platform joints in the stick part and face joints in the stick lid part are not well attached to the rest of the frame parts. 
 These segments are prone to breaking, especially during post-printing processing. 
