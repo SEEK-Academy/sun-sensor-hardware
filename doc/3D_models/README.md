@@ -8,7 +8,7 @@ This section provides a chronological record of development.
 
 ### Release 2026-03-20 SunSensor v2.4
 
-https://cad.onshape.com/documents/923794ab1c178e336c5fca70/w/8d71d4fffd2803819113e6ab/e/7e0e056ad3225102c7428f8c
+[OnShape project](https://cad.onshape.com/documents/923794ab1c178e336c5fca70/w/8d71d4fffd2803819113e6ab/e/7e0e056ad3225102c7428f8c)
 
 #### Parts:
 - Slit sensor face v11
